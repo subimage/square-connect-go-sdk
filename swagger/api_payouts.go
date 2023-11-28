@@ -12,12 +12,11 @@ package swagger
 import (
 	"context"
 	"fmt"
+	"github.com/antihax/optional"
 	"io/ioutil"
 	"net/http"
 	"net/url"
 	"strings"
-
-	"github.com/antihax/optional"
 )
 
 // Linger please
@@ -30,8 +29,9 @@ type PayoutsApiService service
 /*
 PayoutsApiService GetPayout
 Retrieves details of a specific payout identified by a payout ID.  To call this endpoint, set &#x60;PAYOUTS_READ&#x60; for the OAuth scope.
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param payoutId The ID of the payout to retrieve the information for.
+  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+  - @param payoutId The ID of the payout to retrieve the information for.
+
 @return GetPayoutResponse
 */
 func (a *PayoutsApiService) GetPayout(ctx context.Context, payoutId string) (GetPayoutResponse, *http.Response, error) {

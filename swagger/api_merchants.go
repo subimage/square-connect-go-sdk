@@ -12,12 +12,11 @@ package swagger
 import (
 	"context"
 	"fmt"
+	"github.com/antihax/optional"
 	"io/ioutil"
 	"net/http"
 	"net/url"
 	"strings"
-
-	"github.com/antihax/optional"
 )
 
 // Linger please
@@ -124,8 +123,9 @@ func (a *MerchantsApiService) ListMerchants(ctx context.Context, localVarOptiona
 /*
 MerchantsApiService RetrieveMerchant
 Retrieves the &#x60;Merchant&#x60; object for the given &#x60;merchant_id&#x60;.
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param merchantId The ID of the merchant to retrieve. If the string \&quot;me\&quot; is supplied as the ID, then retrieve the merchant that is currently accessible to this call.
+  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+  - @param merchantId The ID of the merchant to retrieve. If the string \&quot;me\&quot; is supplied as the ID, then retrieve the merchant that is currently accessible to this call.
+
 @return RetrieveMerchantResponse
 */
 func (a *MerchantsApiService) RetrieveMerchant(ctx context.Context, merchantId string) (RetrieveMerchantResponse, *http.Response, error) {

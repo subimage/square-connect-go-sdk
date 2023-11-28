@@ -17,7 +17,7 @@ type TerminalAction struct {
 	DeviceId string `json:"device_id,omitempty"`
 	// The duration as an RFC 3339 duration, after which the action will be automatically canceled. TerminalActions that are `PENDING` will be automatically `CANCELED` and have a cancellation reason of `TIMED_OUT`  Default: 5 minutes from creation  Maximum: 5 minutes
 	DeadlineDuration string `json:"deadline_duration,omitempty"`
-	// The status of the `TerminalAction`. Options: `PENDING`, `IN_PROGRESS`, `CANCEL_REQUESTED`, `CANCELED`, `COMPLETED`
+	// The status of the `TerminalAction`. Options: `PENDING`, `IN_PROGRESS`, `CANCELED`, `COMPLETED`
 	Status       string              `json:"status,omitempty"`
 	CancelReason *ActionCancelReason `json:"cancel_reason,omitempty"`
 	// The time when the `TerminalAction` was created as an RFC 3339 timestamp.

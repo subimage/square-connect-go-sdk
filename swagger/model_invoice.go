@@ -50,6 +50,4 @@ type Invoice struct {
 	SaleOrServiceDate string `json:"sale_or_service_date,omitempty"`
 	// **France only.** The payment terms and conditions that are displayed on the invoice. For more information,  see [Payment conditions](https://developer.squareup.com/docs/invoices-api/overview#payment-conditions).  For countries other than France, Square returns an `INVALID_REQUEST_ERROR` with a `BAD_REQUEST` code and  \"Payment conditions are not supported for this location's country\" detail if this field is included in `CreateInvoice` or `UpdateInvoice` requests.
 	PaymentConditions string `json:"payment_conditions,omitempty"`
-	// Indicates whether to allow a customer to save a credit or debit card as a card on file or a bank transfer as a bank account on file. If `true`, Square displays a __Save my card on file__ or __Save my bank on file__ checkbox on the invoice payment page. Stored payment information can be used for future automatic payments. The default value is `false`.
-	StorePaymentMethodEnabled bool `json:"store_payment_method_enabled,omitempty"`
 }

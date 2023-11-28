@@ -11,12 +11,11 @@ package swagger
 
 import (
 	"context"
+	"github.com/antihax/optional"
 	"io/ioutil"
 	"net/http"
 	"net/url"
 	"strings"
-
-	"github.com/antihax/optional"
 )
 
 // Linger please
@@ -29,8 +28,8 @@ type GiftCardActivitiesApiService service
 /*
 GiftCardActivitiesApiService CreateGiftCardActivity
 Creates a gift card activity to manage the balance or state of a [gift card](entity:GiftCard).  For example, you create an &#x60;ACTIVATE&#x60; activity to activate a gift card with an initial balance  before the gift card can be used.
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param body An object containing the fields to POST for the request.
+  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+  - @param body An object containing the fields to POST for the request.
 
 See the corresponding object definition for field details.
 @return CreateGiftCardActivityResponse

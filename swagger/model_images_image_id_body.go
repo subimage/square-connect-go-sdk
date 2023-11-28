@@ -13,7 +13,7 @@ import (
 	"os"
 )
 
-type Body2 struct {
-	Request   *CreateDisputeEvidenceFileRequest `json:"request,omitempty"`
-	ImageFile **os.File                         `json:"image_file,omitempty"`
+type ImagesImageIdBody struct {
+	Request   *UpdateCatalogImageRequest `json:"request,omitempty"`
+	ImageFile **os.File                  `json:"image_file,omitempty"`
 }

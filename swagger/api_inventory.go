@@ -12,12 +12,11 @@ package swagger
 import (
 	"context"
 	"fmt"
+	"github.com/antihax/optional"
 	"io/ioutil"
 	"net/http"
 	"net/url"
 	"strings"
-
-	"github.com/antihax/optional"
 )
 
 // Linger please
@@ -30,8 +29,8 @@ type InventoryApiService service
 /*
 InventoryApiService BatchChangeInventory
 Applies adjustments and counts to the provided item quantities.  On success: returns the current calculated counts for all objects referenced in the request. On failure: returns a list of related errors.
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param body An object containing the fields to POST for the request.
+  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+  - @param body An object containing the fields to POST for the request.
 
 See the corresponding object definition for field details.
 @return BatchChangeInventoryResponse
@@ -119,8 +118,8 @@ func (a *InventoryApiService) BatchChangeInventory(ctx context.Context, body Bat
 /*
 InventoryApiService BatchRetrieveInventoryChanges
 Returns historical physical counts and adjustments based on the provided filter criteria.  Results are paginated and sorted in ascending order according their &#x60;occurred_at&#x60; timestamp (oldest first).  BatchRetrieveInventoryChanges is a catch-all query endpoint for queries that cannot be handled by other, simpler endpoints.
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param body An object containing the fields to POST for the request.
+  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+  - @param body An object containing the fields to POST for the request.
 
 See the corresponding object definition for field details.
 @return BatchRetrieveInventoryChangesResponse
@@ -208,8 +207,8 @@ func (a *InventoryApiService) BatchRetrieveInventoryChanges(ctx context.Context,
 /*
 InventoryApiService BatchRetrieveInventoryCounts
 Returns current counts for the provided [CatalogObject](entity:CatalogObject)s at the requested [Location](entity:Location)s.  Results are paginated and sorted in descending order according to their &#x60;calculated_at&#x60; timestamp (newest first).  When &#x60;updated_after&#x60; is specified, only counts that have changed since that time (based on the server timestamp for the most recent change) are returned. This allows clients to perform a \&quot;sync\&quot; operation, for example in response to receiving a Webhook notification.
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param body An object containing the fields to POST for the request.
+  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+  - @param body An object containing the fields to POST for the request.
 
 See the corresponding object definition for field details.
 @return BatchRetrieveInventoryCountsResponse
@@ -297,8 +296,8 @@ func (a *InventoryApiService) BatchRetrieveInventoryCounts(ctx context.Context, 
 /*
 InventoryApiService DeprecatedBatchChangeInventory
 Deprecated version of [BatchChangeInventory](api-endpoint:Inventory-BatchChangeInventory) after the endpoint URL is updated to conform to the standard convention.
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param body An object containing the fields to POST for the request.
+  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+  - @param body An object containing the fields to POST for the request.
 
 See the corresponding object definition for field details.
 @return BatchChangeInventoryResponse
@@ -386,8 +385,8 @@ func (a *InventoryApiService) DeprecatedBatchChangeInventory(ctx context.Context
 /*
 InventoryApiService DeprecatedBatchRetrieveInventoryChanges
 Deprecated version of [BatchRetrieveInventoryChanges](api-endpoint:Inventory-BatchRetrieveInventoryChanges) after the endpoint URL is updated to conform to the standard convention.
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param body An object containing the fields to POST for the request.
+  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+  - @param body An object containing the fields to POST for the request.
 
 See the corresponding object definition for field details.
 @return BatchRetrieveInventoryChangesResponse
@@ -475,8 +474,8 @@ func (a *InventoryApiService) DeprecatedBatchRetrieveInventoryChanges(ctx contex
 /*
 InventoryApiService DeprecatedBatchRetrieveInventoryCounts
 Deprecated version of [BatchRetrieveInventoryCounts](api-endpoint:Inventory-BatchRetrieveInventoryCounts) after the endpoint URL is updated to conform to the standard convention.
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param body An object containing the fields to POST for the request.
+  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+  - @param body An object containing the fields to POST for the request.
 
 See the corresponding object definition for field details.
 @return BatchRetrieveInventoryCountsResponse
@@ -564,8 +563,9 @@ func (a *InventoryApiService) DeprecatedBatchRetrieveInventoryCounts(ctx context
 /*
 InventoryApiService DeprecatedRetrieveInventoryAdjustment
 Deprecated version of [RetrieveInventoryAdjustment](api-endpoint:Inventory-RetrieveInventoryAdjustment) after the endpoint URL is updated to conform to the standard convention.
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param adjustmentId ID of the [InventoryAdjustment](entity:InventoryAdjustment) to retrieve.
+  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+  - @param adjustmentId ID of the [InventoryAdjustment](entity:InventoryAdjustment) to retrieve.
+
 @return RetrieveInventoryAdjustmentResponse
 */
 func (a *InventoryApiService) DeprecatedRetrieveInventoryAdjustment(ctx context.Context, adjustmentId string) (RetrieveInventoryAdjustmentResponse, *http.Response, error) {
@@ -650,8 +650,9 @@ func (a *InventoryApiService) DeprecatedRetrieveInventoryAdjustment(ctx context.
 /*
 InventoryApiService DeprecatedRetrieveInventoryPhysicalCount
 Deprecated version of [RetrieveInventoryPhysicalCount](api-endpoint:Inventory-RetrieveInventoryPhysicalCount) after the endpoint URL is updated to conform to the standard convention.
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param physicalCountId ID of the [InventoryPhysicalCount](entity:InventoryPhysicalCount) to retrieve.
+  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+  - @param physicalCountId ID of the [InventoryPhysicalCount](entity:InventoryPhysicalCount) to retrieve.
+
 @return RetrieveInventoryPhysicalCountResponse
 */
 func (a *InventoryApiService) DeprecatedRetrieveInventoryPhysicalCount(ctx context.Context, physicalCountId string) (RetrieveInventoryPhysicalCountResponse, *http.Response, error) {
@@ -736,8 +737,9 @@ func (a *InventoryApiService) DeprecatedRetrieveInventoryPhysicalCount(ctx conte
 /*
 InventoryApiService RetrieveInventoryAdjustment
 Returns the [InventoryAdjustment](entity:InventoryAdjustment) object with the provided &#x60;adjustment_id&#x60;.
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param adjustmentId ID of the [InventoryAdjustment](entity:InventoryAdjustment) to retrieve.
+  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+  - @param adjustmentId ID of the [InventoryAdjustment](entity:InventoryAdjustment) to retrieve.
+
 @return RetrieveInventoryAdjustmentResponse
 */
 func (a *InventoryApiService) RetrieveInventoryAdjustment(ctx context.Context, adjustmentId string) (RetrieveInventoryAdjustmentResponse, *http.Response, error) {
@@ -1024,8 +1026,9 @@ func (a *InventoryApiService) RetrieveInventoryCount(ctx context.Context, catalo
 /*
 InventoryApiService RetrieveInventoryPhysicalCount
 Returns the [InventoryPhysicalCount](entity:InventoryPhysicalCount) object with the provided &#x60;physical_count_id&#x60;.
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param physicalCountId ID of the [InventoryPhysicalCount](entity:InventoryPhysicalCount) to retrieve.
+  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+  - @param physicalCountId ID of the [InventoryPhysicalCount](entity:InventoryPhysicalCount) to retrieve.
+
 @return RetrieveInventoryPhysicalCountResponse
 */
 func (a *InventoryApiService) RetrieveInventoryPhysicalCount(ctx context.Context, physicalCountId string) (RetrieveInventoryPhysicalCountResponse, *http.Response, error) {
@@ -1110,8 +1113,9 @@ func (a *InventoryApiService) RetrieveInventoryPhysicalCount(ctx context.Context
 /*
 InventoryApiService RetrieveInventoryTransfer
 Returns the [InventoryTransfer](entity:InventoryTransfer) object with the provided &#x60;transfer_id&#x60;.
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param transferId ID of the [InventoryTransfer](entity:InventoryTransfer) to retrieve.
+  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+  - @param transferId ID of the [InventoryTransfer](entity:InventoryTransfer) to retrieve.
+
 @return RetrieveInventoryTransferResponse
 */
 func (a *InventoryApiService) RetrieveInventoryTransfer(ctx context.Context, transferId string) (RetrieveInventoryTransferResponse, *http.Response, error) {

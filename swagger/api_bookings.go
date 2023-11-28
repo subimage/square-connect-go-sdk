@@ -12,12 +12,11 @@ package swagger
 import (
 	"context"
 	"fmt"
+	"github.com/antihax/optional"
 	"io/ioutil"
 	"net/http"
 	"net/url"
 	"strings"
-
-	"github.com/antihax/optional"
 )
 
 // Linger please
@@ -30,11 +29,12 @@ type BookingsApiService service
 /*
 BookingsApiService CancelBooking
 Cancels an existing booking.  To call this endpoint with buyer-level permissions, set &#x60;APPOINTMENTS_WRITE&#x60; for the OAuth scope. To call this endpoint with seller-level permissions, set &#x60;APPOINTMENTS_ALL_WRITE&#x60; and &#x60;APPOINTMENTS_WRITE&#x60; for the OAuth scope.  For calls to this endpoint with seller-level permissions to succeed, the seller must have subscribed to *Appointments Plus* or *Appointments Premium*.
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param body An object containing the fields to POST for the request.
+  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+  - @param body An object containing the fields to POST for the request.
 
 See the corresponding object definition for field details.
- * @param bookingId The ID of the [Booking](entity:Booking) object representing the to-be-cancelled booking.
+  - @param bookingId The ID of the [Booking](entity:Booking) object representing the to-be-cancelled booking.
+
 @return CancelBookingResponse
 */
 func (a *BookingsApiService) CancelBooking(ctx context.Context, body CancelBookingRequest, bookingId string) (CancelBookingResponse, *http.Response, error) {
@@ -121,8 +121,8 @@ func (a *BookingsApiService) CancelBooking(ctx context.Context, body CancelBooki
 /*
 BookingsApiService CreateBooking
 Creates a booking.  To call this endpoint with buyer-level permissions, set &#x60;APPOINTMENTS_WRITE&#x60; for the OAuth scope. To call this endpoint with seller-level permissions, set &#x60;APPOINTMENTS_ALL_WRITE&#x60; and &#x60;APPOINTMENTS_WRITE&#x60; for the OAuth scope.  For calls to this endpoint with seller-level permissions to succeed, the seller must have subscribed to *Appointments Plus* or *Appointments Premium*.
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param body An object containing the fields to POST for the request.
+  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+  - @param body An object containing the fields to POST for the request.
 
 See the corresponding object definition for field details.
 @return CreateBookingResponse
@@ -438,8 +438,9 @@ func (a *BookingsApiService) ListTeamMemberBookingProfiles(ctx context.Context, 
 /*
 BookingsApiService RetrieveBooking
 Retrieves a booking.  To call this endpoint with buyer-level permissions, set &#x60;APPOINTMENTS_READ&#x60; for the OAuth scope. To call this endpoint with seller-level permissions, set &#x60;APPOINTMENTS_ALL_READ&#x60; and &#x60;APPOINTMENTS_READ&#x60; for the OAuth scope.
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param bookingId The ID of the [Booking](entity:Booking) object representing the to-be-retrieved booking.
+  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+  - @param bookingId The ID of the [Booking](entity:Booking) object representing the to-be-retrieved booking.
+
 @return RetrieveBookingResponse
 */
 func (a *BookingsApiService) RetrieveBooking(ctx context.Context, bookingId string) (RetrieveBookingResponse, *http.Response, error) {
@@ -524,7 +525,8 @@ func (a *BookingsApiService) RetrieveBooking(ctx context.Context, bookingId stri
 /*
 BookingsApiService RetrieveBusinessBookingProfile
 Retrieves a seller&#x27;s booking profile.
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+
 @return RetrieveBusinessBookingProfileResponse
 */
 func (a *BookingsApiService) RetrieveBusinessBookingProfile(ctx context.Context) (RetrieveBusinessBookingProfileResponse, *http.Response, error) {
@@ -608,8 +610,9 @@ func (a *BookingsApiService) RetrieveBusinessBookingProfile(ctx context.Context)
 /*
 BookingsApiService RetrieveTeamMemberBookingProfile
 Retrieves a team member&#x27;s booking profile.
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param teamMemberId The ID of the team member to retrieve.
+  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+  - @param teamMemberId The ID of the team member to retrieve.
+
 @return RetrieveTeamMemberBookingProfileResponse
 */
 func (a *BookingsApiService) RetrieveTeamMemberBookingProfile(ctx context.Context, teamMemberId string) (RetrieveTeamMemberBookingProfileResponse, *http.Response, error) {
@@ -694,8 +697,8 @@ func (a *BookingsApiService) RetrieveTeamMemberBookingProfile(ctx context.Contex
 /*
 BookingsApiService SearchAvailability
 Searches for availabilities for booking.  To call this endpoint with buyer-level permissions, set &#x60;APPOINTMENTS_READ&#x60; for the OAuth scope. To call this endpoint with seller-level permissions, set &#x60;APPOINTMENTS_ALL_READ&#x60; and &#x60;APPOINTMENTS_READ&#x60; for the OAuth scope.
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param body An object containing the fields to POST for the request.
+  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+  - @param body An object containing the fields to POST for the request.
 
 See the corresponding object definition for field details.
 @return SearchAvailabilityResponse
@@ -783,11 +786,12 @@ func (a *BookingsApiService) SearchAvailability(ctx context.Context, body Search
 /*
 BookingsApiService UpdateBooking
 Updates a booking.  To call this endpoint with buyer-level permissions, set &#x60;APPOINTMENTS_WRITE&#x60; for the OAuth scope. To call this endpoint with seller-level permissions, set &#x60;APPOINTMENTS_ALL_WRITE&#x60; and &#x60;APPOINTMENTS_WRITE&#x60; for the OAuth scope.  For calls to this endpoint with seller-level permissions to succeed, the seller must have subscribed to *Appointments Plus* or *Appointments Premium*.
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param body An object containing the fields to POST for the request.
+  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+  - @param body An object containing the fields to POST for the request.
 
 See the corresponding object definition for field details.
- * @param bookingId The ID of the [Booking](entity:Booking) object representing the to-be-updated booking.
+  - @param bookingId The ID of the [Booking](entity:Booking) object representing the to-be-updated booking.
+
 @return UpdateBookingResponse
 */
 func (a *BookingsApiService) UpdateBooking(ctx context.Context, body UpdateBookingRequest, bookingId string) (UpdateBookingResponse, *http.Response, error) {

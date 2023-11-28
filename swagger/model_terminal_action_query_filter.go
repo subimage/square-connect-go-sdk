@@ -13,7 +13,7 @@ type TerminalActionQueryFilter struct {
 	// `TerminalAction`s associated with a specific device. If no device is specified then all `TerminalAction`s for the merchant will be displayed.
 	DeviceId  string     `json:"device_id,omitempty"`
 	CreatedAt *TimeRange `json:"created_at,omitempty"`
-	// Filter results with the desired status of the `TerminalAction` Options: `PENDING`, `IN_PROGRESS`, `CANCEL_REQUESTED`, `CANCELED`, `COMPLETED`
+	// Filter results with the desired status of the `TerminalAction` Options: PENDING, IN_PROGRESS, CANCELED, COMPLETED
 	Status string                    `json:"status,omitempty"`
 	Type_  *TerminalActionActionType `json:"type,omitempty"`
 }

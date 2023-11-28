@@ -12,12 +12,11 @@ package swagger
 import (
 	"context"
 	"fmt"
+	"github.com/antihax/optional"
 	"io/ioutil"
 	"net/http"
 	"net/url"
 	"strings"
-
-	"github.com/antihax/optional"
 )
 
 // Linger please
@@ -30,9 +29,10 @@ type CustomersApiService service
 /*
 CustomersApiService AddGroupToCustomer
 Adds a group membership to a customer.  The customer is identified by the &#x60;customer_id&#x60; value and the customer group is identified by the &#x60;group_id&#x60; value.
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param customerId The ID of the customer to add to a group.
- * @param groupId The ID of the customer group to add the customer to.
+  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+  - @param customerId The ID of the customer to add to a group.
+  - @param groupId The ID of the customer group to add the customer to.
+
 @return AddGroupToCustomerResponse
 */
 func (a *CustomersApiService) AddGroupToCustomer(ctx context.Context, customerId string, groupId string) (AddGroupToCustomerResponse, *http.Response, error) {
@@ -118,8 +118,8 @@ func (a *CustomersApiService) AddGroupToCustomer(ctx context.Context, customerId
 /*
 CustomersApiService CreateCustomer
 Creates a new customer for a business.  You must provide at least one of the following values in your request to this endpoint:  - &#x60;given_name&#x60; - &#x60;family_name&#x60; - &#x60;company_name&#x60; - &#x60;email_address&#x60; - &#x60;phone_number&#x60;
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param body An object containing the fields to POST for the request.
+  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+  - @param body An object containing the fields to POST for the request.
 
 See the corresponding object definition for field details.
 @return CreateCustomerResponse
@@ -207,11 +207,12 @@ func (a *CustomersApiService) CreateCustomer(ctx context.Context, body CreateCus
 /*
 CustomersApiService CreateCustomerCard
 Adds a card on file to an existing customer.  As with charges, calls to &#x60;CreateCustomerCard&#x60; are idempotent. Multiple calls with the same card nonce return the same card record that was created with the provided nonce during the _first_ call.
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param body An object containing the fields to POST for the request.
+  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+  - @param body An object containing the fields to POST for the request.
 
 See the corresponding object definition for field details.
- * @param customerId The Square ID of the customer profile the card is linked to.
+  - @param customerId The Square ID of the customer profile the card is linked to.
+
 @return CreateCustomerCardResponse
 */
 func (a *CustomersApiService) CreateCustomerCard(ctx context.Context, body CreateCustomerCardRequest, customerId string) (CreateCustomerCardResponse, *http.Response, error) {
@@ -394,9 +395,10 @@ func (a *CustomersApiService) DeleteCustomer(ctx context.Context, customerId str
 /*
 CustomersApiService DeleteCustomerCard
 Removes a card on file from a customer.
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param customerId The ID of the customer that the card on file belongs to.
- * @param cardId The ID of the card on file to delete.
+  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+  - @param customerId The ID of the customer that the card on file belongs to.
+  - @param cardId The ID of the card on file to delete.
+
 @return DeleteCustomerCardResponse
 */
 func (a *CustomersApiService) DeleteCustomerCard(ctx context.Context, customerId string, cardId string) (DeleteCustomerCardResponse, *http.Response, error) {
@@ -591,9 +593,10 @@ func (a *CustomersApiService) ListCustomers(ctx context.Context, localVarOptiona
 /*
 CustomersApiService RemoveGroupFromCustomer
 Removes a group membership from a customer.  The customer is identified by the &#x60;customer_id&#x60; value and the customer group is identified by the &#x60;group_id&#x60; value.
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param customerId The ID of the customer to remove from the group.
- * @param groupId The ID of the customer group to remove the customer from.
+  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+  - @param customerId The ID of the customer to remove from the group.
+  - @param groupId The ID of the customer group to remove the customer from.
+
 @return RemoveGroupFromCustomerResponse
 */
 func (a *CustomersApiService) RemoveGroupFromCustomer(ctx context.Context, customerId string, groupId string) (RemoveGroupFromCustomerResponse, *http.Response, error) {
@@ -679,8 +682,9 @@ func (a *CustomersApiService) RemoveGroupFromCustomer(ctx context.Context, custo
 /*
 CustomersApiService RetrieveCustomer
 Returns details for a single customer.
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param customerId The ID of the customer to retrieve.
+  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+  - @param customerId The ID of the customer to retrieve.
+
 @return RetrieveCustomerResponse
 */
 func (a *CustomersApiService) RetrieveCustomer(ctx context.Context, customerId string) (RetrieveCustomerResponse, *http.Response, error) {
@@ -765,8 +769,8 @@ func (a *CustomersApiService) RetrieveCustomer(ctx context.Context, customerId s
 /*
 CustomersApiService SearchCustomers
 Searches the customer profiles associated with a Square account using one or more supported query filters.  Calling &#x60;SearchCustomers&#x60; without any explicit query filter returns all customer profiles ordered alphabetically based on &#x60;given_name&#x60; and &#x60;family_name&#x60;.  Under normal operating conditions, newly created or updated customer profiles become available for the search operation in well under 30 seconds. Occasionally, propagation of the new or updated profiles can take closer to one minute or longer, especially during network incidents and outages.
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param body An object containing the fields to POST for the request.
+  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+  - @param body An object containing the fields to POST for the request.
 
 See the corresponding object definition for field details.
 @return SearchCustomersResponse
@@ -854,11 +858,12 @@ func (a *CustomersApiService) SearchCustomers(ctx context.Context, body SearchCu
 /*
 CustomersApiService UpdateCustomer
 Updates a customer profile. To change an attribute, specify the new value. To remove an attribute, specify the value as an empty string or empty object.  As a best practice, you should include the &#x60;version&#x60; field in the request to enable [optimistic concurrency](https://developer.squareup.com/docs/working-with-apis/optimistic-concurrency) control. The value must be set to the current version of the customer profile.  To update a customer profile that was created by merging existing profiles, you must use the ID of the newly created profile.  You cannot use this endpoint to change cards on file. To make changes, use the [Cards API](api:Cards) or [Gift Cards API](api:GiftCards).
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param body An object containing the fields to POST for the request.
+  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+  - @param body An object containing the fields to POST for the request.
 
 See the corresponding object definition for field details.
- * @param customerId The ID of the customer to update.
+  - @param customerId The ID of the customer to update.
+
 @return UpdateCustomerResponse
 */
 func (a *CustomersApiService) UpdateCustomer(ctx context.Context, body UpdateCustomerRequest, customerId string) (UpdateCustomerResponse, *http.Response, error) {

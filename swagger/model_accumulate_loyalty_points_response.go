@@ -14,6 +14,6 @@ type AccumulateLoyaltyPointsResponse struct {
 	// Any errors that occurred during the request.
 	Errors []ModelError  `json:"errors,omitempty"`
 	Event  *LoyaltyEvent `json:"event,omitempty"`
-	// The resulting loyalty events. If the purchase qualifies for points, the `ACCUMULATE_POINTS` event is always included. When using the Orders API, the `ACCUMULATE_PROMOTION_POINTS` event is included if the purchase also qualifies for a loyalty promotion.
+	// The resulting loyalty events. The `ACCUMULATE_POINTS` event is always included. When using the Orders API, the `ACCUMULATE_PROMOTION_POINTS` event is included if the purchase also qualifies for a loyalty promotion.
 	Events []LoyaltyEvent `json:"events,omitempty"`
 }

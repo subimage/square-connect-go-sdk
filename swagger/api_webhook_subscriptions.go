@@ -12,12 +12,11 @@ package swagger
 import (
 	"context"
 	"fmt"
+	"github.com/antihax/optional"
 	"io/ioutil"
 	"net/http"
 	"net/url"
 	"strings"
-
-	"github.com/antihax/optional"
 )
 
 // Linger please
@@ -30,8 +29,8 @@ type WebhookSubscriptionsApiService service
 /*
 WebhookSubscriptionsApiService CreateWebhookSubscription
 Creates a webhook subscription.
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param body An object containing the fields to POST for the request.
+  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+  - @param body An object containing the fields to POST for the request.
 
 See the corresponding object definition for field details.
 @return CreateWebhookSubscriptionResponse
@@ -119,8 +118,9 @@ func (a *WebhookSubscriptionsApiService) CreateWebhookSubscription(ctx context.C
 /*
 WebhookSubscriptionsApiService DeleteWebhookSubscription
 Deletes a webhook subscription.
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param subscriptionId [REQUIRED] The ID of the [Subscription](entity:WebhookSubscription) to delete.
+  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+  - @param subscriptionId [REQUIRED] The ID of the [Subscription](entity:WebhookSubscription) to delete.
+
 @return DeleteWebhookSubscriptionResponse
 */
 func (a *WebhookSubscriptionsApiService) DeleteWebhookSubscription(ctx context.Context, subscriptionId string) (DeleteWebhookSubscriptionResponse, *http.Response, error) {
@@ -304,7 +304,7 @@ Lists all webhook subscriptions owned by your application.
      * @param "Cursor" (optional.String) -  A pagination cursor returned by a previous call to this endpoint. Provide this to retrieve the next set of results for your original query.  For more information, see [Pagination](https://developer.squareup.com/docs/basics/api101/pagination).
      * @param "IncludeDisabled" (optional.Bool) -  Includes disabled [Subscription](entity:WebhookSubscription)s. By default, all enabled [Subscription](entity:WebhookSubscription)s are returned.
      * @param "SortOrder" (optional.Interface of SortOrder) -  Sorts the returned list by when the [Subscription](entity:WebhookSubscription) was created with the specified order. This field defaults to ASC.
-     * @param "Limit" (optional.Int32) -  The maximum number of results to be returned in a single page. It is possible to receive fewer results than the specified limit on a given page. The default value of 100 is also the maximum allowed value.  Default: 100
+     * @param "Limit" (optional.Int32) -  The maximum number of results to be returned in a single page. It is possible to receive fewer results than the specified limit on a given page. The default value of 100 is also the maximum allowed value. If the provided value is greater than 100, it is ignored and the default value is used instead.  Default: 100
 @return ListWebhookSubscriptionsResponse
 */
 
@@ -408,8 +408,9 @@ func (a *WebhookSubscriptionsApiService) ListWebhookSubscriptions(ctx context.Co
 /*
 WebhookSubscriptionsApiService RetrieveWebhookSubscription
 Retrieves a webhook subscription identified by its ID.
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param subscriptionId [REQUIRED] The ID of the [Subscription](entity:WebhookSubscription) to retrieve.
+  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+  - @param subscriptionId [REQUIRED] The ID of the [Subscription](entity:WebhookSubscription) to retrieve.
+
 @return RetrieveWebhookSubscriptionResponse
 */
 func (a *WebhookSubscriptionsApiService) RetrieveWebhookSubscription(ctx context.Context, subscriptionId string) (RetrieveWebhookSubscriptionResponse, *http.Response, error) {
@@ -494,11 +495,12 @@ func (a *WebhookSubscriptionsApiService) RetrieveWebhookSubscription(ctx context
 /*
 WebhookSubscriptionsApiService TestWebhookSubscription
 Tests a webhook subscription by sending a test event to the notification URL.
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param body An object containing the fields to POST for the request.
+  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+  - @param body An object containing the fields to POST for the request.
 
 See the corresponding object definition for field details.
- * @param subscriptionId [REQUIRED] The ID of the [Subscription](entity:WebhookSubscription) to test.
+  - @param subscriptionId [REQUIRED] The ID of the [Subscription](entity:WebhookSubscription) to test.
+
 @return TestWebhookSubscriptionResponse
 */
 func (a *WebhookSubscriptionsApiService) TestWebhookSubscription(ctx context.Context, body TestWebhookSubscriptionRequest, subscriptionId string) (TestWebhookSubscriptionResponse, *http.Response, error) {
@@ -585,11 +587,12 @@ func (a *WebhookSubscriptionsApiService) TestWebhookSubscription(ctx context.Con
 /*
 WebhookSubscriptionsApiService UpdateWebhookSubscription
 Updates a webhook subscription.
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param body An object containing the fields to POST for the request.
+  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+  - @param body An object containing the fields to POST for the request.
 
 See the corresponding object definition for field details.
- * @param subscriptionId [REQUIRED] The ID of the [Subscription](entity:WebhookSubscription) to update.
+  - @param subscriptionId [REQUIRED] The ID of the [Subscription](entity:WebhookSubscription) to update.
+
 @return UpdateWebhookSubscriptionResponse
 */
 func (a *WebhookSubscriptionsApiService) UpdateWebhookSubscription(ctx context.Context, body UpdateWebhookSubscriptionRequest, subscriptionId string) (UpdateWebhookSubscriptionResponse, *http.Response, error) {
@@ -676,11 +679,12 @@ func (a *WebhookSubscriptionsApiService) UpdateWebhookSubscription(ctx context.C
 /*
 WebhookSubscriptionsApiService UpdateWebhookSubscriptionSignatureKey
 Updates a webhook subscription by replacing the existing signature key with a new one.
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param body An object containing the fields to POST for the request.
+  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+  - @param body An object containing the fields to POST for the request.
 
 See the corresponding object definition for field details.
- * @param subscriptionId [REQUIRED] The ID of the [Subscription](entity:WebhookSubscription) to update.
+  - @param subscriptionId [REQUIRED] The ID of the [Subscription](entity:WebhookSubscription) to update.
+
 @return UpdateWebhookSubscriptionSignatureKeyResponse
 */
 func (a *WebhookSubscriptionsApiService) UpdateWebhookSubscriptionSignatureKey(ctx context.Context, body UpdateWebhookSubscriptionSignatureKeyRequest, subscriptionId string) (UpdateWebhookSubscriptionSignatureKeyResponse, *http.Response, error) {

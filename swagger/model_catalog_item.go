@@ -12,9 +12,9 @@ package swagger
 // A [CatalogObject](entity:CatalogObject) instance of the `ITEM` type, also referred to as an item, in the catalog.
 type CatalogItem struct {
 	// The item's name. This is a searchable attribute for use in applicable query filters, its value must not be empty, and the length is of Unicode code points.
-	Name *string `json:"name,omitempty"`
+	Name string `json:"name,omitempty"`
 	// The item's description. This is a searchable attribute for use in applicable query filters, and its value length is of Unicode code points.  Deprecated at 2022-07-20, this field is planned to retire in 6 months. You should migrate to use `description_html` to set the description  of the [CatalogItem](entity:CatalogItem) instance.  The `description` and `description_html` field values are kept in sync. If you try to  set the both fields, the `description_html` text value overwrites the `description` value. Updates in one field are also reflected in the other,  except for when you use an early version before Square API 2022-07-20 and `description_html` is set to blank, setting the `description` value to null  does not nullify `description_html`.
-	Description *string `json:"description,omitempty"`
+	Description string `json:"description,omitempty"`
 	// The text of the item's display label in the Square Point of Sale app. Only up to the first five characters of the string are used. This attribute is searchable, and its value length is of Unicode code points.
 	Abbreviation string `json:"abbreviation,omitempty"`
 	// The color of the item's display label in the Square Point of Sale app. This must be a valid hex color code.
@@ -40,14 +40,6 @@ type CatalogItem struct {
 	SkipModifierScreen bool `json:"skip_modifier_screen,omitempty"`
 	// List of item options IDs for this item. Used to manage and group item variations in a specified order.  Maximum: 6 item options.
 	ItemOptions []CatalogItemOptionForItem `json:"item_options,omitempty"`
-	// hidden field
-	EcomUri string `json:"ecom_uri,omitempty"`
-	// hidden field
-	EcomImageUris []string `json:"ecom_image_uris,omitempty"`
-	// hidden field
-	EcomAvailable bool `json:"ecom_available,omitempty"`
-	// hidden field
-	EcomVisibility string `json:"ecom_visibility,omitempty"`
 	// The IDs of images associated with this `CatalogItem` instance. These images will be shown to customers in Square Online Store. The first image will show up as the icon for this item in POS.
 	ImageIds []string `json:"image_ids,omitempty"`
 	// A name to sort the item by. If this name is unspecified, namely, the `sort_name` field is absent, the regular `name` field is used for sorting.  It is currently supported for sellers of the Japanese locale only.
@@ -56,6 +48,4 @@ type CatalogItem struct {
 	DescriptionHtml string `json:"description_html,omitempty"`
 	// A server-generated plaintext version of the `description_html` field, without formatting tags.
 	DescriptionPlaintext string `json:"description_plaintext,omitempty"`
-	// A list of IFM channel ids and Square Online site ids where the object can be published.
-	Channels []string `json:"channels,omitempty"`  
 }

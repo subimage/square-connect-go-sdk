@@ -28,8 +28,8 @@ type OrdersApiService service
 /*
 OrdersApiService BatchRetrieveOrders
 Retrieves a set of [orders](entity:Order) by their IDs.  If a given order ID does not exist, the ID is ignored instead of generating an error.
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param body An object containing the fields to POST for the request.
+  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+  - @param body An object containing the fields to POST for the request.
 
 See the corresponding object definition for field details.
 @return BatchRetrieveOrdersResponse
@@ -117,8 +117,8 @@ func (a *OrdersApiService) BatchRetrieveOrders(ctx context.Context, body BatchRe
 /*
 OrdersApiService CalculateOrder
 Enables applications to preview order pricing without creating an order.
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param body An object containing the fields to POST for the request.
+  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+  - @param body An object containing the fields to POST for the request.
 
 See the corresponding object definition for field details.
 @return CalculateOrderResponse
@@ -206,8 +206,8 @@ func (a *OrdersApiService) CalculateOrder(ctx context.Context, body CalculateOrd
 /*
 OrdersApiService CloneOrder
 Creates a new order, in the &#x60;DRAFT&#x60; state, by duplicating an existing order. The newly created order has  only the core fields (such as line items, taxes, and discounts) copied from the original order.
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param body An object containing the fields to POST for the request.
+  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+  - @param body An object containing the fields to POST for the request.
 
 See the corresponding object definition for field details.
 @return CloneOrderResponse
@@ -295,8 +295,8 @@ func (a *OrdersApiService) CloneOrder(ctx context.Context, body CloneOrderReques
 /*
 OrdersApiService CreateOrder
 Creates a new [order](entity:Order) that can include information about products for purchase and settings to apply to the purchase.  To pay for a created order, see  [Pay for Orders](https://developer.squareup.com/docs/orders-api/pay-for-orders).  You can modify open orders using the [UpdateOrder](api-endpoint:Orders-UpdateOrder) endpoint.
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param body An object containing the fields to POST for the request.
+  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+  - @param body An object containing the fields to POST for the request.
 
 See the corresponding object definition for field details.
 @return CreateOrderResponse
@@ -384,11 +384,12 @@ func (a *OrdersApiService) CreateOrder(ctx context.Context, body CreateOrderRequ
 /*
 OrdersApiService PayOrder
 Pay for an [order](entity:Order) using one or more approved [payments](entity:Payment) or settle an order with a total of &#x60;0&#x60;.  The total of the &#x60;payment_ids&#x60; listed in the request must be equal to the order total. Orders with a total amount of &#x60;0&#x60; can be marked as paid by specifying an empty array of &#x60;payment_ids&#x60; in the request.  To be used with &#x60;PayOrder&#x60;, a payment must:  - Reference the order by specifying the &#x60;order_id&#x60; when [creating the payment](api-endpoint:Payments-CreatePayment). Any approved payments that reference the same &#x60;order_id&#x60; not specified in the &#x60;payment_ids&#x60; is canceled. - Be approved with [delayed capture](https://developer.squareup.com/docs/payments-api/take-payments/card-payments/delayed-capture). Using a delayed capture payment with &#x60;PayOrder&#x60; completes the approved payment.
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param body An object containing the fields to POST for the request.
+  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+  - @param body An object containing the fields to POST for the request.
 
 See the corresponding object definition for field details.
- * @param orderId The ID of the order being paid.
+  - @param orderId The ID of the order being paid.
+
 @return PayOrderResponse
 */
 func (a *OrdersApiService) PayOrder(ctx context.Context, body PayOrderRequest, orderId string) (PayOrderResponse, *http.Response, error) {
@@ -475,8 +476,9 @@ func (a *OrdersApiService) PayOrder(ctx context.Context, body PayOrderRequest, o
 /*
 OrdersApiService RetrieveOrder
 Retrieves an [Order](entity:Order) by ID.
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param orderId The ID of the order to retrieve.
+  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+  - @param orderId The ID of the order to retrieve.
+
 @return RetrieveOrderResponse
 */
 func (a *OrdersApiService) RetrieveOrder(ctx context.Context, orderId string) (RetrieveOrderResponse, *http.Response, error) {
@@ -561,8 +563,8 @@ func (a *OrdersApiService) RetrieveOrder(ctx context.Context, orderId string) (R
 /*
 OrdersApiService SearchOrders
 Search all orders for one or more locations. Orders include all sales, returns, and exchanges regardless of how or when they entered the Square ecosystem (such as Point of Sale, Invoices, and Connect APIs).  &#x60;SearchOrders&#x60; requests need to specify which locations to search and define a [SearchOrdersQuery](entity:SearchOrdersQuery) object that controls how to sort or filter the results. Your &#x60;SearchOrdersQuery&#x60; can:    Set filter criteria.   Set the sort order.   Determine whether to return results as complete &#x60;Order&#x60; objects or as [OrderEntry](entity:OrderEntry) objects.  Note that details for orders processed with Square Point of Sale while in offline mode might not be transmitted to Square for up to 72 hours. Offline orders have a &#x60;created_at&#x60; value that reflects the time the order was created, not the time it was subsequently transmitted to Square.
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param body An object containing the fields to POST for the request.
+  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+  - @param body An object containing the fields to POST for the request.
 
 See the corresponding object definition for field details.
 @return SearchOrdersResponse
@@ -650,11 +652,12 @@ func (a *OrdersApiService) SearchOrders(ctx context.Context, body SearchOrdersRe
 /*
 OrdersApiService UpdateOrder
 Updates an open [order](entity:Order) by adding, replacing, or deleting fields. Orders with a &#x60;COMPLETED&#x60; or &#x60;CANCELED&#x60; state cannot be updated.  An &#x60;UpdateOrder&#x60; request requires the following:  - The &#x60;order_id&#x60; in the endpoint path, identifying the order to update. - The latest &#x60;version&#x60; of the order to update. - The [sparse order](https://developer.squareup.com/docs/orders-api/manage-orders/update-orders#sparse-order-objects) containing only the fields to update and the version to which the update is being applied. - If deleting fields, the [dot notation paths](https://developer.squareup.com/docs/orders-api/manage-orders#on-dot-notation) identifying the fields to clear.  To pay for an order, see  [Pay for Orders](https://developer.squareup.com/docs/orders-api/pay-for-orders).
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param body An object containing the fields to POST for the request.
+  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+  - @param body An object containing the fields to POST for the request.
 
 See the corresponding object definition for field details.
- * @param orderId The ID of the order to update.
+  - @param orderId The ID of the order to update.
+
 @return UpdateOrderResponse
 */
 func (a *OrdersApiService) UpdateOrder(ctx context.Context, body UpdateOrderRequest, orderId string) (UpdateOrderResponse, *http.Response, error) {

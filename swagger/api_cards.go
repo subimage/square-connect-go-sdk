@@ -29,8 +29,8 @@ type CardsApiService service
 /*
 CardsApiService CreateCard
 Adds a card on file to an existing merchant.
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param body An object containing the fields to POST for the request.
+  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+  - @param body An object containing the fields to POST for the request.
 
 See the corresponding object definition for field details.
 @return CreateCardResponse
@@ -118,11 +118,12 @@ func (a *CardsApiService) CreateCard(ctx context.Context, body CreateCardRequest
 /*
 CardsApiService DisableCard
 Disables the card, preventing any further updates or charges. Disabling an already disabled card is allowed but has no effect.
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param body An object containing the fields to POST for the request.
+  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+  - @param body An object containing the fields to POST for the request.
 
 See the corresponding object definition for field details.
- * @param cardId Unique ID for the desired Card.
+  - @param cardId Unique ID for the desired Card.
+
 @return DisableCardResponse
 */
 func (a *CardsApiService) DisableCard(ctx context.Context, body DisableCardRequest, cardId string) (DisableCardResponse, *http.Response, error) {
@@ -323,8 +324,9 @@ func (a *CardsApiService) ListCards(ctx context.Context, localVarOptionals *Card
 /*
 CardsApiService RetrieveCard
 Retrieves details for a specific Card.
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param cardId Unique ID for the desired Card.
+  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+  - @param cardId Unique ID for the desired Card.
+
 @return RetrieveCardResponse
 */
 func (a *CardsApiService) RetrieveCard(ctx context.Context, cardId string) (RetrieveCardResponse, *http.Response, error) {

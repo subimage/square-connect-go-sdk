@@ -12,12 +12,11 @@ package swagger
 import (
 	"context"
 	"fmt"
+	"github.com/antihax/optional"
 	"io/ioutil"
 	"net/http"
 	"net/url"
 	"strings"
-
-	"github.com/antihax/optional"
 )
 
 // Linger please
@@ -29,12 +28,13 @@ type LoyaltyApiService service
 
 /*
 LoyaltyApiService AccumulateLoyaltyPoints
-Adds points earned from a purchase to a [loyalty account](entity:LoyaltyAccount).  - If you are using the Orders API to manage orders, provide the &#x60;order_id&#x60;. Square reads the order to compute the points earned from both the base loyalty program and an associated [loyalty promotion](entity:LoyaltyPromotion). For purchases that qualify for multiple accrual rules, Square computes points based on the accrual rule that grants the most points. For purchases that qualify for multiple promotions, Square computes points based on the most recently created promotion. A purchase must first qualify for program points to be eligible for promotion points.  - If you are not using the Orders API to manage orders, provide &#x60;points&#x60; with the number of points to add. You must first perform a client-side computation of the points earned from the loyalty program and loyalty promotion. For spend-based and visit-based programs, you can call [CalculateLoyaltyPoints](api-endpoint:Loyalty-CalculateLoyaltyPoints) to compute the points earned from the base loyalty program. For information about computing points earned from a loyalty promotion, see [Calculating promotion points](https://developer.squareup.com/docs/loyalty-api/loyalty-promotions#calculate-promotion-points).
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param body An object containing the fields to POST for the request.
+Adds points earned from a purchase to a [loyalty account](entity:LoyaltyAccount).  - If you are using the Orders API to manage orders, provide the &#x60;order_id&#x60;. Square reads the order to compute the points earned from both the base loyalty program and an associated [loyalty promotion](entity:LoyaltyPromotion). For purchases that qualify for multiple accrual rules, Square computes points based on the accrual rule that grants the most points. For purchases that qualify for multiple promotions, Square computes points based on the most recently created promotion. A purchase must first qualify for program points to be eligible for promotion points.  - If you are not using the Orders API to manage orders, provide &#x60;points&#x60; with the number of points to add. You must first perform a client-side computation of the points earned from the loyalty program and loyalty promotion. For spend-based and visit-based programs, you can call [CalculateLoyaltyPoints](api-endpoint:Loyalty-CalculateLoyaltyPoints) to compute the points earned from the loyalty program (but not points earned from a loyalty promotion).
+  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+  - @param body An object containing the fields to POST for the request.
 
 See the corresponding object definition for field details.
- * @param accountId The ID of the target [loyalty account](entity:LoyaltyAccount).
+  - @param accountId The ID of the target [loyalty account](entity:LoyaltyAccount).
+
 @return AccumulateLoyaltyPointsResponse
 */
 func (a *LoyaltyApiService) AccumulateLoyaltyPoints(ctx context.Context, body AccumulateLoyaltyPointsRequest, accountId string) (AccumulateLoyaltyPointsResponse, *http.Response, error) {
@@ -121,11 +121,12 @@ func (a *LoyaltyApiService) AccumulateLoyaltyPoints(ctx context.Context, body Ac
 /*
 LoyaltyApiService AdjustLoyaltyPoints
 Adds points to or subtracts points from a buyer&#x27;s account.   Use this endpoint only when you need to manually adjust points. Otherwise, in your application flow, you call  [AccumulateLoyaltyPoints](api-endpoint:Loyalty-AccumulateLoyaltyPoints)  to add points when a buyer pays for the purchase.
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param body An object containing the fields to POST for the request.
+  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+  - @param body An object containing the fields to POST for the request.
 
 See the corresponding object definition for field details.
- * @param accountId The ID of the target [loyalty account](entity:LoyaltyAccount).
+  - @param accountId The ID of the target [loyalty account](entity:LoyaltyAccount).
+
 @return AdjustLoyaltyPointsResponse
 */
 func (a *LoyaltyApiService) AdjustLoyaltyPoints(ctx context.Context, body AdjustLoyaltyPointsRequest, accountId string) (AdjustLoyaltyPointsResponse, *http.Response, error) {
@@ -212,11 +213,12 @@ func (a *LoyaltyApiService) AdjustLoyaltyPoints(ctx context.Context, body Adjust
 /*
 LoyaltyApiService CalculateLoyaltyPoints
 Calculates the number of points a buyer can earn from a purchase. Applications might call this endpoint to display the points to the buyer.  - If you are using the Orders API to manage orders, provide the &#x60;order_id&#x60; and (optional) &#x60;loyalty_account_id&#x60;. Square reads the order to compute the points earned from the base loyalty program and an associated [loyalty promotion](entity:LoyaltyPromotion).  - If you are not using the Orders API to manage orders, provide &#x60;transaction_amount_money&#x60; with the purchase amount. Square uses this amount to calculate the points earned from the base loyalty program, but not points earned from a loyalty promotion. For spend-based and visit-based programs, the &#x60;tax_mode&#x60; setting of the accrual rule indicates how taxes should be treated for loyalty points accrual. If the purchase qualifies for program points, call [ListLoyaltyPromotions](api-endpoint:Loyalty-ListLoyaltyPromotions) and perform a client-side computation to calculate whether the purchase also qualifies for promotion points. For more information, see [Calculating promotion points](https://developer.squareup.com/docs/loyalty-api/loyalty-promotions#calculate-promotion-points).
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param body An object containing the fields to POST for the request.
+  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+  - @param body An object containing the fields to POST for the request.
 
 See the corresponding object definition for field details.
- * @param programId The ID of the [loyalty program](entity:LoyaltyProgram), which defines the rules for accruing points.
+  - @param programId The ID of the [loyalty program](entity:LoyaltyProgram), which defines the rules for accruing points.
+
 @return CalculateLoyaltyPointsResponse
 */
 func (a *LoyaltyApiService) CalculateLoyaltyPoints(ctx context.Context, body CalculateLoyaltyPointsRequest, programId string) (CalculateLoyaltyPointsResponse, *http.Response, error) {
@@ -303,9 +305,10 @@ func (a *LoyaltyApiService) CalculateLoyaltyPoints(ctx context.Context, body Cal
 /*
 LoyaltyApiService CancelLoyaltyPromotion
 Cancels a loyalty promotion. Use this endpoint to cancel an &#x60;ACTIVE&#x60; promotion earlier than the end date, cancel an &#x60;ACTIVE&#x60; promotion when an end date is not specified, or cancel a &#x60;SCHEDULED&#x60; promotion. Because updating a promotion is not supported, you can also use this endpoint to cancel a promotion before you create a new one.  This endpoint sets the loyalty promotion to the &#x60;CANCELED&#x60; state
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param promotionId The ID of the [loyalty promotion](entity:LoyaltyPromotion) to cancel. You can cancel a promotion that has an &#x60;ACTIVE&#x60; or &#x60;SCHEDULED&#x60; status.
- * @param programId The ID of the base [loyalty program](entity:LoyaltyProgram).
+  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+  - @param promotionId The ID of the [loyalty promotion](entity:LoyaltyPromotion) to cancel. You can cancel a promotion that has an &#x60;ACTIVE&#x60; or &#x60;SCHEDULED&#x60; status.
+  - @param programId The ID of the base [loyalty program](entity:LoyaltyProgram).
+
 @return CancelLoyaltyPromotionResponse
 */
 func (a *LoyaltyApiService) CancelLoyaltyPromotion(ctx context.Context, promotionId string, programId string) (CancelLoyaltyPromotionResponse, *http.Response, error) {
@@ -391,8 +394,8 @@ func (a *LoyaltyApiService) CancelLoyaltyPromotion(ctx context.Context, promotio
 /*
 LoyaltyApiService CreateLoyaltyAccount
 Creates a loyalty account. To create a loyalty account, you must provide the &#x60;program_id&#x60; and a &#x60;mapping&#x60; with the &#x60;phone_number&#x60; of the buyer.
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param body An object containing the fields to POST for the request.
+  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+  - @param body An object containing the fields to POST for the request.
 
 See the corresponding object definition for field details.
 @return CreateLoyaltyAccountResponse
@@ -480,11 +483,12 @@ func (a *LoyaltyApiService) CreateLoyaltyAccount(ctx context.Context, body Creat
 /*
 LoyaltyApiService CreateLoyaltyPromotion
 Creates a loyalty promotion for a [loyalty program](entity:LoyaltyProgram). A loyalty promotion enables buyers to earn points in addition to those earned from the base loyalty program.  This endpoint sets the loyalty promotion to the &#x60;ACTIVE&#x60; or &#x60;SCHEDULED&#x60; status, depending on the &#x60;available_time&#x60; setting. A loyalty program can have a maximum of 10 loyalty promotions with an &#x60;ACTIVE&#x60; or &#x60;SCHEDULED&#x60; status.
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param body An object containing the fields to POST for the request.
+  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+  - @param body An object containing the fields to POST for the request.
 
 See the corresponding object definition for field details.
- * @param programId The ID of the [loyalty program](entity:LoyaltyProgram) to associate with the promotion. To get the program ID, call [RetrieveLoyaltyProgram](api-endpoint:Loyalty-RetrieveLoyaltyProgram) using the &#x60;main&#x60; keyword.
+  - @param programId The ID of the [loyalty program](entity:LoyaltyProgram) to associate with the promotion. To get the program ID, call [RetrieveLoyaltyProgram](api-endpoint:Loyalty-RetrieveLoyaltyProgram) using the &#x60;main&#x60; keyword.
+
 @return CreateLoyaltyPromotionResponse
 */
 func (a *LoyaltyApiService) CreateLoyaltyPromotion(ctx context.Context, body CreateLoyaltyPromotionRequest, programId string) (CreateLoyaltyPromotionResponse, *http.Response, error) {
@@ -571,8 +575,8 @@ func (a *LoyaltyApiService) CreateLoyaltyPromotion(ctx context.Context, body Cre
 /*
 LoyaltyApiService CreateLoyaltyReward
 Creates a loyalty reward. In the process, the endpoint does following:  - Uses the &#x60;reward_tier_id&#x60; in the request to determine the number of points  to lock for this reward.  - If the request includes &#x60;order_id&#x60;, it adds the reward and related discount to the order.   After a reward is created, the points are locked and  not available for the buyer to redeem another reward.
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param body An object containing the fields to POST for the request.
+  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+  - @param body An object containing the fields to POST for the request.
 
 See the corresponding object definition for field details.
 @return CreateLoyaltyRewardResponse
@@ -660,8 +664,9 @@ func (a *LoyaltyApiService) CreateLoyaltyReward(ctx context.Context, body Create
 /*
 LoyaltyApiService DeleteLoyaltyReward
 Deletes a loyalty reward by doing the following:  - Returns the loyalty points back to the loyalty account. - If an order ID was specified when the reward was created  (see [CreateLoyaltyReward](api-endpoint:Loyalty-CreateLoyaltyReward)),  it updates the order by removing the reward and related  discounts.  You cannot delete a reward that has reached the terminal state (REDEEMED).
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param rewardId The ID of the [loyalty reward](entity:LoyaltyReward) to delete.
+  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+  - @param rewardId The ID of the [loyalty reward](entity:LoyaltyReward) to delete.
+
 @return DeleteLoyaltyRewardResponse
 */
 func (a *LoyaltyApiService) DeleteLoyaltyReward(ctx context.Context, rewardId string) (DeleteLoyaltyRewardResponse, *http.Response, error) {
@@ -746,7 +751,8 @@ func (a *LoyaltyApiService) DeleteLoyaltyReward(ctx context.Context, rewardId st
 /*
 LoyaltyApiService ListLoyaltyPrograms
 Returns a list of loyalty programs in the seller&#x27;s account. Loyalty programs define how buyers can earn points and redeem points for rewards. Square sellers can have only one loyalty program, which is created and managed from the Seller Dashboard. For more information, see [Loyalty Program Overview](https://developer.squareup.com/docs/loyalty/overview).   Replaced with [RetrieveLoyaltyProgram](api-endpoint:Loyalty-RetrieveLoyaltyProgram) when used with the keyword &#x60;main&#x60;.
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+
 @return ListLoyaltyProgramsResponse
 */
 func (a *LoyaltyApiService) ListLoyaltyPrograms(ctx context.Context) (ListLoyaltyProgramsResponse, *http.Response, error) {
@@ -936,11 +942,12 @@ func (a *LoyaltyApiService) ListLoyaltyPromotions(ctx context.Context, programId
 /*
 LoyaltyApiService RedeemLoyaltyReward
 Redeems a loyalty reward.  The endpoint sets the reward to the &#x60;REDEEMED&#x60; terminal state.   If you are using your own order processing system (not using the  Orders API), you call this endpoint after the buyer paid for the  purchase.  After the reward reaches the terminal state, it cannot be deleted.  In other words, points used for the reward cannot be returned  to the account.
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param body An object containing the fields to POST for the request.
+  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+  - @param body An object containing the fields to POST for the request.
 
 See the corresponding object definition for field details.
- * @param rewardId The ID of the [loyalty reward](entity:LoyaltyReward) to redeem.
+  - @param rewardId The ID of the [loyalty reward](entity:LoyaltyReward) to redeem.
+
 @return RedeemLoyaltyRewardResponse
 */
 func (a *LoyaltyApiService) RedeemLoyaltyReward(ctx context.Context, body RedeemLoyaltyRewardRequest, rewardId string) (RedeemLoyaltyRewardResponse, *http.Response, error) {
@@ -1027,8 +1034,9 @@ func (a *LoyaltyApiService) RedeemLoyaltyReward(ctx context.Context, body Redeem
 /*
 LoyaltyApiService RetrieveLoyaltyAccount
 Retrieves a loyalty account.
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param accountId The ID of the [loyalty account](entity:LoyaltyAccount) to retrieve.
+  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+  - @param accountId The ID of the [loyalty account](entity:LoyaltyAccount) to retrieve.
+
 @return RetrieveLoyaltyAccountResponse
 */
 func (a *LoyaltyApiService) RetrieveLoyaltyAccount(ctx context.Context, accountId string) (RetrieveLoyaltyAccountResponse, *http.Response, error) {
@@ -1113,8 +1121,9 @@ func (a *LoyaltyApiService) RetrieveLoyaltyAccount(ctx context.Context, accountI
 /*
 LoyaltyApiService RetrieveLoyaltyProgram
 Retrieves the loyalty program in a seller&#x27;s account, specified by the program ID or the keyword &#x60;main&#x60;.   Loyalty programs define how buyers can earn points and redeem points for rewards. Square sellers can have only one loyalty program, which is created and managed from the Seller Dashboard. For more information, see [Loyalty Program Overview](https://developer.squareup.com/docs/loyalty/overview).
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param programId The ID of the loyalty program or the keyword &#x60;main&#x60;. Either value can be used to retrieve the single loyalty program that belongs to the seller.
+  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+  - @param programId The ID of the loyalty program or the keyword &#x60;main&#x60;. Either value can be used to retrieve the single loyalty program that belongs to the seller.
+
 @return RetrieveLoyaltyProgramResponse
 */
 func (a *LoyaltyApiService) RetrieveLoyaltyProgram(ctx context.Context, programId string) (RetrieveLoyaltyProgramResponse, *http.Response, error) {
@@ -1199,9 +1208,10 @@ func (a *LoyaltyApiService) RetrieveLoyaltyProgram(ctx context.Context, programI
 /*
 LoyaltyApiService RetrieveLoyaltyPromotion
 Retrieves a loyalty promotion.
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param promotionId The ID of the [loyalty promotion](entity:LoyaltyPromotion) to retrieve.
- * @param programId The ID of the base [loyalty program](entity:LoyaltyProgram). To get the program ID, call [RetrieveLoyaltyProgram](api-endpoint:Loyalty-RetrieveLoyaltyProgram) using the &#x60;main&#x60; keyword.
+  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+  - @param promotionId The ID of the [loyalty promotion](entity:LoyaltyPromotion) to retrieve.
+  - @param programId The ID of the base [loyalty program](entity:LoyaltyProgram). To get the program ID, call [RetrieveLoyaltyProgram](api-endpoint:Loyalty-RetrieveLoyaltyProgram) using the &#x60;main&#x60; keyword.
+
 @return RetrieveLoyaltyPromotionResponse
 */
 func (a *LoyaltyApiService) RetrieveLoyaltyPromotion(ctx context.Context, promotionId string, programId string) (RetrieveLoyaltyPromotionResponse, *http.Response, error) {
@@ -1287,8 +1297,9 @@ func (a *LoyaltyApiService) RetrieveLoyaltyPromotion(ctx context.Context, promot
 /*
 LoyaltyApiService RetrieveLoyaltyReward
 Retrieves a loyalty reward.
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param rewardId The ID of the [loyalty reward](entity:LoyaltyReward) to retrieve.
+  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+  - @param rewardId The ID of the [loyalty reward](entity:LoyaltyReward) to retrieve.
+
 @return RetrieveLoyaltyRewardResponse
 */
 func (a *LoyaltyApiService) RetrieveLoyaltyReward(ctx context.Context, rewardId string) (RetrieveLoyaltyRewardResponse, *http.Response, error) {
@@ -1373,8 +1384,8 @@ func (a *LoyaltyApiService) RetrieveLoyaltyReward(ctx context.Context, rewardId 
 /*
 LoyaltyApiService SearchLoyaltyAccounts
 Searches for loyalty accounts in a loyalty program.    You can search for a loyalty account using the phone number or customer ID associated with the account. To return all loyalty accounts, specify an empty &#x60;query&#x60; object or omit it entirely.    Search results are sorted by &#x60;created_at&#x60; in ascending order.
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param body An object containing the fields to POST for the request.
+  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+  - @param body An object containing the fields to POST for the request.
 
 See the corresponding object definition for field details.
 @return SearchLoyaltyAccountsResponse
@@ -1462,8 +1473,8 @@ func (a *LoyaltyApiService) SearchLoyaltyAccounts(ctx context.Context, body Sear
 /*
 LoyaltyApiService SearchLoyaltyEvents
 Searches for loyalty events.  A Square loyalty program maintains a ledger of events that occur during the lifetime of a  buyer&#x27;s loyalty account. Each change in the point balance  (for example, points earned, points redeemed, and points expired) is  recorded in the ledger. Using this endpoint, you can search the ledger for events.  Search results are sorted by &#x60;created_at&#x60; in descending order.
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param body An object containing the fields to POST for the request.
+  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+  - @param body An object containing the fields to POST for the request.
 
 See the corresponding object definition for field details.
 @return SearchLoyaltyEventsResponse
@@ -1551,8 +1562,8 @@ func (a *LoyaltyApiService) SearchLoyaltyEvents(ctx context.Context, body Search
 /*
 LoyaltyApiService SearchLoyaltyRewards
 Searches for loyalty rewards. This endpoint accepts a request with no query filters and returns results for all loyalty accounts.  If you include a &#x60;query&#x60; object, &#x60;loyalty_account_id&#x60; is required and &#x60;status&#x60; is  optional.  If you know a reward ID, use the  [RetrieveLoyaltyReward](api-endpoint:Loyalty-RetrieveLoyaltyReward) endpoint.  Search results are sorted by &#x60;updated_at&#x60; in descending order.
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param body An object containing the fields to POST for the request.
+  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+  - @param body An object containing the fields to POST for the request.
 
 See the corresponding object definition for field details.
 @return SearchLoyaltyRewardsResponse

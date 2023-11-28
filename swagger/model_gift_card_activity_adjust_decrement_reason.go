@@ -18,5 +18,4 @@ const (
 	SUSPICIOUS_ACTIVITY_GiftCardActivityAdjustDecrementReason            GiftCardActivityAdjustDecrementReason = "SUSPICIOUS_ACTIVITY"
 	BALANCE_ACCIDENTALLY_INCREASED_GiftCardActivityAdjustDecrementReason GiftCardActivityAdjustDecrementReason = "BALANCE_ACCIDENTALLY_INCREASED"
 	SUPPORT_ISSUE_GiftCardActivityAdjustDecrementReason                  GiftCardActivityAdjustDecrementReason = "SUPPORT_ISSUE"
-	PURCHASE_WAS_REFUNDED_GiftCardActivityAdjustDecrementReason          GiftCardActivityAdjustDecrementReason = "PURCHASE_WAS_REFUNDED"
 )

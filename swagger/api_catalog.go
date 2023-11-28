@@ -12,13 +12,12 @@ package swagger
 import (
 	"context"
 	"fmt"
+	"github.com/antihax/optional"
 	"io/ioutil"
 	"net/http"
 	"net/url"
 	"os"
 	"strings"
-
-	"github.com/antihax/optional"
 )
 
 // Linger please
@@ -31,8 +30,8 @@ type CatalogApiService service
 /*
 CatalogApiService BatchDeleteCatalogObjects
 Deletes a set of [CatalogItem](entity:CatalogItem)s based on the provided list of target IDs and returns a set of successfully deleted IDs in the response. Deletion is a cascading event such that all children of the targeted object are also deleted. For example, deleting a CatalogItem will also delete all of its [CatalogItemVariation](entity:CatalogItemVariation) children.  &#x60;BatchDeleteCatalogObjects&#x60; succeeds even if only a portion of the targeted IDs can be deleted. The response will only include IDs that were actually deleted.
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param body An object containing the fields to POST for the request.
+  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+  - @param body An object containing the fields to POST for the request.
 
 See the corresponding object definition for field details.
 @return BatchDeleteCatalogObjectsResponse
@@ -120,8 +119,8 @@ func (a *CatalogApiService) BatchDeleteCatalogObjects(ctx context.Context, body 
 /*
 CatalogApiService BatchRetrieveCatalogObjects
 Returns a set of objects based on the provided ID. Each [CatalogItem](entity:CatalogItem) returned in the set includes all of its child information including: all of its [CatalogItemVariation](entity:CatalogItemVariation) objects, references to its [CatalogModifierList](entity:CatalogModifierList) objects, and the ids of any [CatalogTax](entity:CatalogTax) objects that apply to it.
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param body An object containing the fields to POST for the request.
+  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+  - @param body An object containing the fields to POST for the request.
 
 See the corresponding object definition for field details.
 @return BatchRetrieveCatalogObjectsResponse
@@ -209,8 +208,8 @@ func (a *CatalogApiService) BatchRetrieveCatalogObjects(ctx context.Context, bod
 /*
 CatalogApiService BatchUpsertCatalogObjects
 Creates or updates up to 10,000 target objects based on the provided list of objects. The target objects are grouped into batches and each batch is inserted/updated in an all-or-nothing manner. If an object within a batch is malformed in some way, or violates a database constraint, the entire batch containing that item will be disregarded. However, other batches in the same request may still succeed. Each batch may contain up to 1,000 objects, and batches will be processed in order as long as the total object count for the request (items, variations, modifier lists, discounts, and taxes) is no more than 10,000.
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param body An object containing the fields to POST for the request.
+  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+  - @param body An object containing the fields to POST for the request.
 
 See the corresponding object definition for field details.
 @return BatchUpsertCatalogObjectsResponse
@@ -298,7 +297,8 @@ func (a *CatalogApiService) BatchUpsertCatalogObjects(ctx context.Context, body 
 /*
 CatalogApiService CatalogInfo
 Retrieves information about the Square Catalog API, such as batch size limits that can be used by the &#x60;BatchUpsertCatalogObjects&#x60; endpoint.
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+
 @return CatalogInfoResponse
 */
 func (a *CatalogApiService) CatalogInfo(ctx context.Context) (CatalogInfoResponse, *http.Response, error) {
@@ -382,9 +382,10 @@ func (a *CatalogApiService) CatalogInfo(ctx context.Context) (CatalogInfoRespons
 /*
 CatalogApiService CreateCatalogImage
 Uploads an image file to be represented by a [CatalogImage](entity:CatalogImage) object that can be linked to an existing [CatalogObject](entity:CatalogObject) instance. The resulting &#x60;CatalogImage&#x60; is unattached to any &#x60;CatalogObject&#x60; if the &#x60;object_id&#x60; is not specified.  This &#x60;CreateCatalogImage&#x60; endpoint accepts HTTP multipart/form-data requests with a JSON part and an image file part in JPEG, PJPEG, PNG, or GIF format. The maximum file size is 15MB.
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param request
- * @param imageFile
+  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+  - @param request
+  - @param imageFile
+
 @return CreateCatalogImageResponse
 */
 func (a *CatalogApiService) CreateCatalogImage(ctx context.Context, request CreateCatalogImageRequest, imageFile *os.File) (CreateCatalogImageResponse, *http.Response, error) {
@@ -476,8 +477,9 @@ func (a *CatalogApiService) CreateCatalogImage(ctx context.Context, request Crea
 /*
 CatalogApiService DeleteCatalogObject
 Deletes a single [CatalogObject](entity:CatalogObject) based on the provided ID and returns the set of successfully deleted IDs in the response. Deletion is a cascading event such that all children of the targeted object are also deleted. For example, deleting a [CatalogItem](entity:CatalogItem) will also delete all of its [CatalogItemVariation](entity:CatalogItemVariation) children.
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param objectId The ID of the catalog object to be deleted. When an object is deleted, other objects in the graph that depend on that object will be deleted as well (for example, deleting a catalog item will delete its catalog item variations).
+  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+  - @param objectId The ID of the catalog object to be deleted. When an object is deleted, other objects in the graph that depend on that object will be deleted as well (for example, deleting a catalog item will delete its catalog item variations).
+
 @return DeleteCatalogObjectResponse
 */
 func (a *CatalogApiService) DeleteCatalogObject(ctx context.Context, objectId string) (DeleteCatalogObjectResponse, *http.Response, error) {
@@ -767,8 +769,8 @@ func (a *CatalogApiService) RetrieveCatalogObject(ctx context.Context, objectId 
 /*
 CatalogApiService SearchCatalogItems
 Searches for catalog items or item variations by matching supported search attribute values, including custom attribute values, against one or more of the specified query filters.  This (&#x60;SearchCatalogItems&#x60;) endpoint differs from the [SearchCatalogObjects](api-endpoint:Catalog-SearchCatalogObjects) endpoint in the following aspects:  - &#x60;SearchCatalogItems&#x60; can only search for items or item variations, whereas &#x60;SearchCatalogObjects&#x60; can search for any type of catalog objects. - &#x60;SearchCatalogItems&#x60; supports the custom attribute query filters to return items or item variations that contain custom attribute values, where &#x60;SearchCatalogObjects&#x60; does not. - &#x60;SearchCatalogItems&#x60; does not support the &#x60;include_deleted_objects&#x60; filter to search for deleted items or item variations, whereas &#x60;SearchCatalogObjects&#x60; does. - The both endpoints use different call conventions, including the query filter formats.
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param body An object containing the fields to POST for the request.
+  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+  - @param body An object containing the fields to POST for the request.
 
 See the corresponding object definition for field details.
 @return SearchCatalogItemsResponse
@@ -856,8 +858,8 @@ func (a *CatalogApiService) SearchCatalogItems(ctx context.Context, body SearchC
 /*
 CatalogApiService SearchCatalogObjects
 Searches for [CatalogObject](entity:CatalogObject) of any type by matching supported search attribute values, excluding custom attribute values on items or item variations, against one or more of the specified query filters.  This (&#x60;SearchCatalogObjects&#x60;) endpoint differs from the [SearchCatalogItems](api-endpoint:Catalog-SearchCatalogItems) endpoint in the following aspects:  - &#x60;SearchCatalogItems&#x60; can only search for items or item variations, whereas &#x60;SearchCatalogObjects&#x60; can search for any type of catalog objects. - &#x60;SearchCatalogItems&#x60; supports the custom attribute query filters to return items or item variations that contain custom attribute values, where &#x60;SearchCatalogObjects&#x60; does not. - &#x60;SearchCatalogItems&#x60; does not support the &#x60;include_deleted_objects&#x60; filter to search for deleted items or item variations, whereas &#x60;SearchCatalogObjects&#x60; does. - The both endpoints have different call conventions, including the query filter formats.
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param body An object containing the fields to POST for the request.
+  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+  - @param body An object containing the fields to POST for the request.
 
 See the corresponding object definition for field details.
 @return SearchCatalogObjectsResponse
@@ -945,10 +947,11 @@ func (a *CatalogApiService) SearchCatalogObjects(ctx context.Context, body Searc
 /*
 CatalogApiService UpdateCatalogImage
 Uploads a new image file to replace the existing one in the specified [CatalogImage](entity:CatalogImage) object.   This &#x60;UpdateCatalogImage&#x60; endpoint accepts HTTP multipart/form-data requests with a JSON part and an image file part in JPEG, PJPEG, PNG, or GIF format. The maximum file size is 15MB.
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param request
- * @param imageFile
- * @param imageId The ID of the &#x60;CatalogImage&#x60; object to update the encapsulated image file.
+  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+  - @param request
+  - @param imageFile
+  - @param imageId The ID of the &#x60;CatalogImage&#x60; object to update the encapsulated image file.
+
 @return UpdateCatalogImageResponse
 */
 func (a *CatalogApiService) UpdateCatalogImage(ctx context.Context, request UpdateCatalogImageRequest, imageFile *os.File, imageId string) (UpdateCatalogImageResponse, *http.Response, error) {
@@ -1041,8 +1044,8 @@ func (a *CatalogApiService) UpdateCatalogImage(ctx context.Context, request Upda
 /*
 CatalogApiService UpdateItemModifierLists
 Updates the [CatalogModifierList](entity:CatalogModifierList) objects that apply to the targeted [CatalogItem](entity:CatalogItem) without having to perform an upsert on the entire item.
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param body An object containing the fields to POST for the request.
+  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+  - @param body An object containing the fields to POST for the request.
 
 See the corresponding object definition for field details.
 @return UpdateItemModifierListsResponse
@@ -1130,8 +1133,8 @@ func (a *CatalogApiService) UpdateItemModifierLists(ctx context.Context, body Up
 /*
 CatalogApiService UpdateItemTaxes
 Updates the [CatalogTax](entity:CatalogTax) objects that apply to the targeted [CatalogItem](entity:CatalogItem) without having to perform an upsert on the entire item.
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param body An object containing the fields to POST for the request.
+  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+  - @param body An object containing the fields to POST for the request.
 
 See the corresponding object definition for field details.
 @return UpdateItemTaxesResponse
@@ -1219,8 +1222,8 @@ func (a *CatalogApiService) UpdateItemTaxes(ctx context.Context, body UpdateItem
 /*
 CatalogApiService UpsertCatalogObject
 Creates or updates the target [CatalogObject](entity:CatalogObject).
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param body An object containing the fields to POST for the request.
+  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+  - @param body An object containing the fields to POST for the request.
 
 See the corresponding object definition for field details.
 @return UpsertCatalogObjectResponse

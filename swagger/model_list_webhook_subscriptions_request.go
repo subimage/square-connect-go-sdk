@@ -16,6 +16,6 @@ type ListWebhookSubscriptionsRequest struct {
 	// Includes disabled [Subscription](entity:WebhookSubscription)s. By default, all enabled [Subscription](entity:WebhookSubscription)s are returned.
 	IncludeDisabled bool       `json:"include_disabled,omitempty"`
 	SortOrder       *SortOrder `json:"sort_order,omitempty"`
-	// The maximum number of results to be returned in a single page. It is possible to receive fewer results than the specified limit on a given page. The default value of 100 is also the maximum allowed value.  Default: 100
+	// The maximum number of results to be returned in a single page. It is possible to receive fewer results than the specified limit on a given page. The default value of 100 is also the maximum allowed value. If the provided value is greater than 100, it is ignored and the default value is used instead.  Default: 100
 	Limit int32 `json:"limit,omitempty"`
 }

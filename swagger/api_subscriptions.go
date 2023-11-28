@@ -12,12 +12,11 @@ package swagger
 import (
 	"context"
 	"fmt"
+	"github.com/antihax/optional"
 	"io/ioutil"
 	"net/http"
 	"net/url"
 	"strings"
-
-	"github.com/antihax/optional"
 )
 
 // Linger please
@@ -30,8 +29,9 @@ type SubscriptionsApiService service
 /*
 SubscriptionsApiService CancelSubscription
 Schedules a &#x60;CANCEL&#x60; action to cancel an active subscription  by setting the &#x60;canceled_date&#x60; field to the end of the active billing period  and changing the subscription status from ACTIVE to CANCELED after this date.
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param subscriptionId The ID of the subscription to cancel.
+  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+  - @param subscriptionId The ID of the subscription to cancel.
+
 @return CancelSubscriptionResponse
 */
 func (a *SubscriptionsApiService) CancelSubscription(ctx context.Context, subscriptionId string) (CancelSubscriptionResponse, *http.Response, error) {
@@ -116,8 +116,8 @@ func (a *SubscriptionsApiService) CancelSubscription(ctx context.Context, subscr
 /*
 SubscriptionsApiService CreateSubscription
 Creates a subscription to a subscription plan by a customer.  If you provide a card on file in the request, Square charges the card for the subscription. Otherwise, Square bills an invoice to the customer&#x27;s email address. The subscription starts immediately, unless the request includes the optional &#x60;start_date&#x60;. Each individual subscription is associated with a particular location.
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param body An object containing the fields to POST for the request.
+  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+  - @param body An object containing the fields to POST for the request.
 
 See the corresponding object definition for field details.
 @return CreateSubscriptionResponse
@@ -205,9 +205,10 @@ func (a *SubscriptionsApiService) CreateSubscription(ctx context.Context, body C
 /*
 SubscriptionsApiService DeleteSubscriptionAction
 Deletes a scheduled action for a subscription.
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param subscriptionId The ID of the subscription the targeted action is to act upon.
- * @param actionId The ID of the targeted action to be deleted.
+  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+  - @param subscriptionId The ID of the subscription the targeted action is to act upon.
+  - @param actionId The ID of the targeted action to be deleted.
+
 @return DeleteSubscriptionActionResponse
 */
 func (a *SubscriptionsApiService) DeleteSubscriptionAction(ctx context.Context, subscriptionId string, actionId string) (DeleteSubscriptionActionResponse, *http.Response, error) {
@@ -394,11 +395,12 @@ func (a *SubscriptionsApiService) ListSubscriptionEvents(ctx context.Context, su
 /*
 SubscriptionsApiService PauseSubscription
 Schedules a &#x60;PAUSE&#x60; action to pause an active subscription.
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param body An object containing the fields to POST for the request.
+  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+  - @param body An object containing the fields to POST for the request.
 
 See the corresponding object definition for field details.
- * @param subscriptionId The ID of the subscription to pause.
+  - @param subscriptionId The ID of the subscription to pause.
+
 @return PauseSubscriptionResponse
 */
 func (a *SubscriptionsApiService) PauseSubscription(ctx context.Context, body PauseSubscriptionRequest, subscriptionId string) (PauseSubscriptionResponse, *http.Response, error) {
@@ -485,11 +487,12 @@ func (a *SubscriptionsApiService) PauseSubscription(ctx context.Context, body Pa
 /*
 SubscriptionsApiService ResumeSubscription
 Schedules a &#x60;RESUME&#x60; action to resume a paused or a deactivated subscription.
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param body An object containing the fields to POST for the request.
+  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+  - @param body An object containing the fields to POST for the request.
 
 See the corresponding object definition for field details.
- * @param subscriptionId The ID of the subscription to resume.
+  - @param subscriptionId The ID of the subscription to resume.
+
 @return ResumeSubscriptionResponse
 */
 func (a *SubscriptionsApiService) ResumeSubscription(ctx context.Context, body ResumeSubscriptionRequest, subscriptionId string) (ResumeSubscriptionResponse, *http.Response, error) {
@@ -672,8 +675,8 @@ func (a *SubscriptionsApiService) RetrieveSubscription(ctx context.Context, subs
 /*
 SubscriptionsApiService SearchSubscriptions
 Searches for subscriptions.  Results are ordered chronologically by subscription creation date. If the request specifies more than one location ID, the endpoint orders the result by location ID, and then by creation date within each location. If no locations are given in the query, all locations are searched.  You can also optionally specify &#x60;customer_ids&#x60; to search by customer. If left unset, all customers associated with the specified locations are returned. If the request specifies customer IDs, the endpoint orders results first by location, within location by customer ID, and within customer by subscription creation date.  For more information, see [Retrieve subscriptions](https://developer.squareup.com/docs/subscriptions-api/overview#retrieve-subscriptions).
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param body An object containing the fields to POST for the request.
+  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+  - @param body An object containing the fields to POST for the request.
 
 See the corresponding object definition for field details.
 @return SearchSubscriptionsResponse
@@ -761,11 +764,12 @@ func (a *SubscriptionsApiService) SearchSubscriptions(ctx context.Context, body 
 /*
 SubscriptionsApiService SwapPlan
 Schedules a &#x60;SWAP_PLAN&#x60; action to swap a subscription plan in an existing subscription.
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param body An object containing the fields to POST for the request.
+  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+  - @param body An object containing the fields to POST for the request.
 
 See the corresponding object definition for field details.
- * @param subscriptionId The ID of the subscription to swap the subscription plan for.
+  - @param subscriptionId The ID of the subscription to swap the subscription plan for.
+
 @return SwapPlanResponse
 */
 func (a *SubscriptionsApiService) SwapPlan(ctx context.Context, body SwapPlanRequest, subscriptionId string) (SwapPlanResponse, *http.Response, error) {
@@ -852,11 +856,12 @@ func (a *SubscriptionsApiService) SwapPlan(ctx context.Context, body SwapPlanReq
 /*
 SubscriptionsApiService UpdateSubscription
 Updates a subscription. You can set, modify, and clear the &#x60;subscription&#x60; field values.
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param body An object containing the fields to POST for the request.
+  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+  - @param body An object containing the fields to POST for the request.
 
 See the corresponding object definition for field details.
- * @param subscriptionId The ID of the subscription to update.
+  - @param subscriptionId The ID of the subscription to update.
+
 @return UpdateSubscriptionResponse
 */
 func (a *SubscriptionsApiService) UpdateSubscription(ctx context.Context, body UpdateSubscriptionRequest, subscriptionId string) (UpdateSubscriptionResponse, *http.Response, error) {

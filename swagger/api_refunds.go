@@ -12,12 +12,11 @@ package swagger
 import (
 	"context"
 	"fmt"
+	"github.com/antihax/optional"
 	"io/ioutil"
 	"net/http"
 	"net/url"
 	"strings"
-
-	"github.com/antihax/optional"
 )
 
 // Linger please
@@ -30,8 +29,9 @@ type RefundsApiService service
 /*
 RefundsApiService GetPaymentRefund
 Retrieves a specific refund using the &#x60;refund_id&#x60;.
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param refundId The unique ID for the desired &#x60;PaymentRefund&#x60;.
+  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+  - @param refundId The unique ID for the desired &#x60;PaymentRefund&#x60;.
+
 @return GetPaymentRefundResponse
 */
 func (a *RefundsApiService) GetPaymentRefund(ctx context.Context, refundId string) (GetPaymentRefundResponse, *http.Response, error) {
@@ -245,8 +245,8 @@ func (a *RefundsApiService) ListPaymentRefunds(ctx context.Context, localVarOpti
 /*
 RefundsApiService RefundPayment
 Refunds a payment. You can refund the entire payment amount or a portion of it. You can use this endpoint to refund a card payment or record a  refund of a cash or external payment. For more information, see [Refund Payment](https://developer.squareup.com/docs/payments-api/refund-payments).
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param body An object containing the fields to POST for the request.
+  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+  - @param body An object containing the fields to POST for the request.
 
 See the corresponding object definition for field details.
 @return RefundPaymentResponse

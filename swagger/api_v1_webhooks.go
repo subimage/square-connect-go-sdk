@@ -26,13 +26,14 @@ var (
 type V1WebhooksApiService service
 
 /*
-V1WebhooksApiService V1ListWebhooks
+V1WebhooksApiService ListWebhooks
 Lists which types of events trigger webhook notifications for a particular location. See the [V1 Webhooks API guide](https://developer.squareup.com/docs/webhooks-api/what-it-does-v1) for more information.
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param locationId The ID of the location to list webhook notification types for.
+  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+  - @param locationId The ID of the location to list webhook notification types for.
+
 @return []V1WebhooksEvents
 */
-func (a *V1WebhooksApiService) V1ListWebhooks(ctx context.Context, locationId string) ([]V1WebhooksEvents, *http.Response, error) {
+func (a *V1WebhooksApiService) ListWebhooks(ctx context.Context, locationId string) ([]V1WebhooksEvents, *http.Response, error) {
 	var (
 		localVarHttpMethod  = strings.ToUpper("Get")
 		localVarPostBody    interface{}
@@ -112,13 +113,14 @@ func (a *V1WebhooksApiService) V1ListWebhooks(ctx context.Context, locationId st
 }
 
 /*
-V1WebhooksApiService V1UpdateWebhooks
+V1WebhooksApiService UpdateWebhooks
 Changes the webhook event subscriptions for a location. See the [V1 Webhooks API guide](https://developer.squareup.com/docs/webhooks-api/what-it-does-v1) for more information.
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param locationId The ID of the location to list webhook notification types for.
+  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+  - @param locationId The ID of the location to list webhook notification types for.
+
 @return []V1WebhooksEvents
 */
-func (a *V1WebhooksApiService) V1UpdateWebhooks(ctx context.Context, locationId string) ([]V1WebhooksEvents, *http.Response, error) {
+func (a *V1WebhooksApiService) UpdateWebhooks(ctx context.Context, locationId string) ([]V1WebhooksEvents, *http.Response, error) {
 	var (
 		localVarHttpMethod  = strings.ToUpper("Put")
 		localVarPostBody    interface{}

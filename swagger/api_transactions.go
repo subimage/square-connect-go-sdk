@@ -29,9 +29,10 @@ type TransactionsApiService service
 /*
 TransactionsApiService CaptureTransaction
 Captures a transaction that was created with the [Charge](api-endpoint:Transactions-Charge) endpoint with a &#x60;delay_capture&#x60; value of &#x60;true&#x60;.   See [Delayed capture transactions](https://developer.squareup.com/docs/payments/transactions/overview#delayed-capture) for more information.
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param locationId
- * @param transactionId
+  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+  - @param locationId
+  - @param transactionId
+
 @return CaptureTransactionResponse
 */
 func (a *TransactionsApiService) CaptureTransaction(ctx context.Context, locationId string, transactionId string) (CaptureTransactionResponse, *http.Response, error) {
@@ -228,9 +229,10 @@ func (a *TransactionsApiService) ListTransactions(ctx context.Context, locationI
 /*
 TransactionsApiService RetrieveTransaction
 Retrieves details for a single transaction.
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param locationId The ID of the transaction&#x27;s associated location.
- * @param transactionId The ID of the transaction to retrieve.
+  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+  - @param locationId The ID of the transaction&#x27;s associated location.
+  - @param transactionId The ID of the transaction to retrieve.
+
 @return RetrieveTransactionResponse
 */
 func (a *TransactionsApiService) RetrieveTransaction(ctx context.Context, locationId string, transactionId string) (RetrieveTransactionResponse, *http.Response, error) {
@@ -316,9 +318,10 @@ func (a *TransactionsApiService) RetrieveTransaction(ctx context.Context, locati
 /*
 TransactionsApiService VoidTransaction
 Cancels a transaction that was created with the [Charge](api-endpoint:Transactions-Charge) endpoint with a &#x60;delay_capture&#x60; value of &#x60;true&#x60;.   See [Delayed capture transactions](https://developer.squareup.com/docs/payments/transactions/overview#delayed-capture) for more information.
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param locationId
- * @param transactionId
+  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+  - @param locationId
+  - @param transactionId
+
 @return VoidTransactionResponse
 */
 func (a *TransactionsApiService) VoidTransaction(ctx context.Context, locationId string, transactionId string) (VoidTransactionResponse, *http.Response, error) {

@@ -12,12 +12,11 @@ package swagger
 import (
 	"context"
 	"fmt"
+	"github.com/antihax/optional"
 	"io/ioutil"
 	"net/http"
 	"net/url"
 	"strings"
-
-	"github.com/antihax/optional"
 )
 
 // Linger please
@@ -30,8 +29,8 @@ type GiftCardsApiService service
 /*
 GiftCardsApiService CreateGiftCard
 Creates a digital gift card or registers a physical (plastic) gift card. After the gift card  is created, you must call [CreateGiftCardActivity](api-endpoint:GiftCardActivities-CreateGiftCardActivity)  to activate the card with an initial balance before it can be used for payment.
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param body An object containing the fields to POST for the request.
+  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+  - @param body An object containing the fields to POST for the request.
 
 See the corresponding object definition for field details.
 @return CreateGiftCardResponse
@@ -119,11 +118,12 @@ func (a *GiftCardsApiService) CreateGiftCard(ctx context.Context, body CreateGif
 /*
 GiftCardsApiService LinkCustomerToGiftCard
 Links a customer to a gift card, which is also referred to as adding a card on file.
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param body An object containing the fields to POST for the request.
+  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+  - @param body An object containing the fields to POST for the request.
 
 See the corresponding object definition for field details.
- * @param giftCardId The ID of the gift card to be linked.
+  - @param giftCardId The ID of the gift card to be linked.
+
 @return LinkCustomerToGiftCardResponse
 */
 func (a *GiftCardsApiService) LinkCustomerToGiftCard(ctx context.Context, body LinkCustomerToGiftCardRequest, giftCardId string) (LinkCustomerToGiftCardResponse, *http.Response, error) {
@@ -324,8 +324,9 @@ func (a *GiftCardsApiService) ListGiftCards(ctx context.Context, localVarOptiona
 /*
 GiftCardsApiService RetrieveGiftCard
 Retrieves a gift card using the gift card ID.
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param id The ID of the gift card to retrieve.
+  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+  - @param id The ID of the gift card to retrieve.
+
 @return RetrieveGiftCardResponse
 */
 func (a *GiftCardsApiService) RetrieveGiftCard(ctx context.Context, id string) (RetrieveGiftCardResponse, *http.Response, error) {
@@ -410,8 +411,8 @@ func (a *GiftCardsApiService) RetrieveGiftCard(ctx context.Context, id string) (
 /*
 GiftCardsApiService RetrieveGiftCardFromGAN
 Retrieves a gift card using the gift card account number (GAN).
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param body An object containing the fields to POST for the request.
+  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+  - @param body An object containing the fields to POST for the request.
 
 See the corresponding object definition for field details.
 @return RetrieveGiftCardFromGanResponse
@@ -499,8 +500,8 @@ func (a *GiftCardsApiService) RetrieveGiftCardFromGAN(ctx context.Context, body 
 /*
 GiftCardsApiService RetrieveGiftCardFromNonce
 Retrieves a gift card using a secure payment token that represents the gift card.
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param body An object containing the fields to POST for the request.
+  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+  - @param body An object containing the fields to POST for the request.
 
 See the corresponding object definition for field details.
 @return RetrieveGiftCardFromNonceResponse
@@ -588,11 +589,12 @@ func (a *GiftCardsApiService) RetrieveGiftCardFromNonce(ctx context.Context, bod
 /*
 GiftCardsApiService UnlinkCustomerFromGiftCard
 Unlinks a customer from a gift card, which is also referred to as removing a card on file.
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param body An object containing the fields to POST for the request.
+  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+  - @param body An object containing the fields to POST for the request.
 
 See the corresponding object definition for field details.
- * @param giftCardId The ID of the gift card to be unlinked.
+  - @param giftCardId The ID of the gift card to be unlinked.
+
 @return UnlinkCustomerFromGiftCardResponse
 */
 func (a *GiftCardsApiService) UnlinkCustomerFromGiftCard(ctx context.Context, body UnlinkCustomerFromGiftCardRequest, giftCardId string) (UnlinkCustomerFromGiftCardResponse, *http.Response, error) {

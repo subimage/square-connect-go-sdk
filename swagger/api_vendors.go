@@ -28,8 +28,8 @@ type VendorsApiService service
 /*
 VendorsApiService BulkCreateVendors
 Creates one or more [Vendor](entity:Vendor) objects to represent suppliers to a seller.
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param body An object containing the fields to POST for the request.
+  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+  - @param body An object containing the fields to POST for the request.
 
 See the corresponding object definition for field details.
 @return BulkCreateVendorsResponse
@@ -117,8 +117,8 @@ func (a *VendorsApiService) BulkCreateVendors(ctx context.Context, body BulkCrea
 /*
 VendorsApiService BulkRetrieveVendors
 Retrieves one or more vendors of specified [Vendor](entity:Vendor) IDs.
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param body An object containing the fields to POST for the request.
+  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+  - @param body An object containing the fields to POST for the request.
 
 See the corresponding object definition for field details.
 @return BulkRetrieveVendorsResponse
@@ -206,8 +206,8 @@ func (a *VendorsApiService) BulkRetrieveVendors(ctx context.Context, body BulkRe
 /*
 VendorsApiService BulkUpdateVendors
 Updates one or more of existing [Vendor](entity:Vendor) objects as suppliers to a seller.
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param body An object containing the fields to POST for the request.
+  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+  - @param body An object containing the fields to POST for the request.
 
 See the corresponding object definition for field details.
 @return BulkUpdateVendorsResponse
@@ -295,8 +295,8 @@ func (a *VendorsApiService) BulkUpdateVendors(ctx context.Context, body BulkUpda
 /*
 VendorsApiService CreateVendor
 Creates a single [Vendor](entity:Vendor) object to represent a supplier to a seller.
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param body An object containing the fields to POST for the request.
+  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+  - @param body An object containing the fields to POST for the request.
 
 See the corresponding object definition for field details.
 @return CreateVendorResponse
@@ -384,8 +384,9 @@ func (a *VendorsApiService) CreateVendor(ctx context.Context, body CreateVendorR
 /*
 VendorsApiService RetrieveVendor
 Retrieves the vendor of a specified [Vendor](entity:Vendor) ID.
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param vendorId ID of the [Vendor](entity:Vendor) to retrieve.
+  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+  - @param vendorId ID of the [Vendor](entity:Vendor) to retrieve.
+
 @return RetrieveVendorResponse
 */
 func (a *VendorsApiService) RetrieveVendor(ctx context.Context, vendorId string) (RetrieveVendorResponse, *http.Response, error) {
@@ -470,8 +471,8 @@ func (a *VendorsApiService) RetrieveVendor(ctx context.Context, vendorId string)
 /*
 VendorsApiService SearchVendors
 Searches for vendors using a filter against supported [Vendor](entity:Vendor) properties and a supported sorter.
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param body An object containing the fields to POST for the request.
+  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+  - @param body An object containing the fields to POST for the request.
 
 See the corresponding object definition for field details.
 @return SearchVendorsResponse
@@ -559,8 +560,8 @@ func (a *VendorsApiService) SearchVendors(ctx context.Context, body SearchVendor
 /*
 VendorsApiService UpdateVendor
 Updates an existing [Vendor](entity:Vendor) object as a supplier to a seller.
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param body An object containing the fields to POST for the request.
+  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+  - @param body An object containing the fields to POST for the request.
 
 See the corresponding object definition for field details.
 @return UpdateVendorResponse

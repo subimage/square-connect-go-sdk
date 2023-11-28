@@ -27,8 +27,9 @@ type V1BatchingApiService service
 /*
 V1BatchingApiService V1SubmitBatch
 Bundle multiple requests to Connect V1 API endpoints as a single request.   The __V1SubmitBatch__ endpoint does not require an access token in the request header. Instead, provide an &#x60;access_token&#x60; parameter for each request included in the batch.  __V1SubmitBatch__ responds with an array that contains response objects for each of the batched requests. There is no guarantee of the order in which batched requests are performed.   __IMPORTANT__  You cannot include more than 30 requests in a single batch and recursive requests to __V1SubmitBatch__ are not allowed. In other words, none of the requests included in a batch can itself be a request to the __V1SubmitBatch__ endpoint.
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param body The set of API actions to perform.
+  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+  - @param body The set of API actions to perform.
+
 @return []BatchResponse
 */
 func (a *V1BatchingApiService) V1SubmitBatch(ctx context.Context, body BatchRequest) ([]BatchResponse, *http.Response, error) {

@@ -13,7 +13,7 @@ import (
 	"os"
 )
 
-type Body struct {
+type CatalogImagesBody struct {
 	Request   *CreateCatalogImageRequest `json:"request,omitempty"`
 	ImageFile **os.File                  `json:"image_file,omitempty"`
 }

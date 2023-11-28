@@ -13,7 +13,7 @@ package swagger
 type CustomAttributeDefinition struct {
 	// The identifier of the custom attribute definition and its corresponding custom attributes. This value can be a simple key, which is the key that is provided when the custom attribute definition is created, or a qualified key, if the requesting application is not the definition owner. The qualified key consists of the application ID of the custom attribute definition owner followed by the simple key that was provided when the definition was created. It has the format application_id:simple key.  The value for a simple key can contain up to 60 alphanumeric characters, periods (.), underscores (_), and hyphens (-).  This field can not be changed after the custom attribute definition is created. This field is required when creating a definition and must be unique per application, seller, and resource type.
 	Key string `json:"key,omitempty"`
-	// The JSON schema for the custom attribute definition, which determines the data type of the corresponding custom attributes. For more information, see [Custom Attributes Overview](https://developer.squareup.com/docs/devtools/customattributes/overview). This field is required when creating a definition.
+	// The JSON schema for the custom attribute definition. For more information about the schema, see [Custom Attributes Overview](https://developer.squareup.com/docs/devtools/customattributes/overview).
 	Schema *interface{} `json:"schema,omitempty"`
 	// The name of the custom attribute definition for API and seller-facing UI purposes. The name must be unique within the seller and application pair. This field is required if the `visibility` field is `VISIBILITY_READ_ONLY` or `VISIBILITY_READ_WRITE_VALUES`.
 	Name string `json:"name,omitempty"`

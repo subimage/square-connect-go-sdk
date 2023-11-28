@@ -22,7 +22,7 @@ type Payout struct {
 	UpdatedAt   string       `json:"updated_at,omitempty"`
 	AmountMoney *Money       `json:"amount_money,omitempty"`
 	Destination *Destination `json:"destination,omitempty"`
-	// The version number, which is incremented each time an update is made to this payout record. The version number helps developers receive event notifications or feeds out of order.
+	// The version number, which is incremented each time an update is made to this payout record. The version number helps developers receive event notifications or feeds out of order.
 	Version int32       `json:"version,omitempty"`
 	Type_   *PayoutType `json:"type,omitempty"`
 	// A list of transfer fees and any taxes on the fees assessed by Square for this payout.

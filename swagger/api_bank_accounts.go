@@ -29,8 +29,9 @@ type BankAccountsApiService service
 /*
 BankAccountsApiService GetBankAccount
 Returns details of a [BankAccount](entity:BankAccount) linked to a Square account.
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param bankAccountId Square-issued ID of the desired &#x60;BankAccount&#x60;.
+  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+  - @param bankAccountId Square-issued ID of the desired &#x60;BankAccount&#x60;.
+
 @return GetBankAccountResponse
 */
 func (a *BankAccountsApiService) GetBankAccount(ctx context.Context, bankAccountId string) (GetBankAccountResponse, *http.Response, error) {
@@ -115,8 +116,9 @@ func (a *BankAccountsApiService) GetBankAccount(ctx context.Context, bankAccount
 /*
 BankAccountsApiService GetBankAccountByV1Id
 Returns details of a [BankAccount](entity:BankAccount) identified by V1 bank account ID.
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param v1BankAccountId Connect V1 ID of the desired &#x60;BankAccount&#x60;. For more information, see  [Retrieve a bank account by using an ID issued by V1 Bank Accounts API](https://developer.squareup.com/docs/bank-accounts-api#retrieve-a-bank-account-by-using-an-id-issued-by-v1-bank-accounts-api).
+  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+  - @param v1BankAccountId Connect V1 ID of the desired &#x60;BankAccount&#x60;. For more information, see  [Retrieve a bank account by using an ID issued by V1 Bank Accounts API](https://developer.squareup.com/docs/bank-accounts-api#retrieve-a-bank-account-by-using-an-id-issued-by-v1-bank-accounts-api).
+
 @return GetBankAccountByV1IdResponse
 */
 func (a *BankAccountsApiService) GetBankAccountByV1Id(ctx context.Context, v1BankAccountId string) (GetBankAccountByV1IdResponse, *http.Response, error) {

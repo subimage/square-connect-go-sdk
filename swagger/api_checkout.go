@@ -12,12 +12,11 @@ package swagger
 import (
 	"context"
 	"fmt"
+	"github.com/antihax/optional"
 	"io/ioutil"
 	"net/http"
 	"net/url"
 	"strings"
-
-	"github.com/antihax/optional"
 )
 
 // Linger please
@@ -29,12 +28,13 @@ type CheckoutApiService service
 
 /*
 CheckoutApiService CreateCheckout
-Links a &#x60;checkoutId&#x60; to a &#x60;checkout_page_url&#x60; that customers are directed to in order to provide their payment information using a payment processing workflow hosted on connect.squareup.com.    NOTE: The Checkout API has been updated with new features.  For more information, see [Checkout API highlights](https://developer.squareup.com/docs/checkout-api#checkout-api-highlights). We recommend that you use the new [CreatePaymentLink](api-endpoint:Checkout-CreatePaymentLink)  endpoint in place of this previously released endpoint.
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param body An object containing the fields to POST for the request.
+Links a &#x60;checkoutId&#x60; to a &#x60;checkout_page_url&#x60; that customers are directed to in order to provide their payment information using a payment processing workflow hosted on connect.squareup.com.    NOTE: The Checkout API has been updated with new features.  For more information, see [Checkout API highlights](https://developer.squareup.com/docs/checkout-api#checkout-api-highlights). We recommend that you use the new [CreatePaymentLink](api-endpoint:Checkout-CreatePaymentLink)  endpoint in place of this previously released endpoint.
+  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+  - @param body An object containing the fields to POST for the request.
 
 See the corresponding object definition for field details.
- * @param locationId The ID of the business location to associate the checkout with.
+  - @param locationId The ID of the business location to associate the checkout with.
+
 @return CreateCheckoutResponse
 */
 func (a *CheckoutApiService) CreateCheckout(ctx context.Context, body CreateCheckoutRequest, locationId string) (CreateCheckoutResponse, *http.Response, error) {
@@ -121,8 +121,8 @@ func (a *CheckoutApiService) CreateCheckout(ctx context.Context, body CreateChec
 /*
 CheckoutApiService CreatePaymentLink
 Creates a Square-hosted checkout page. Applications can share the resulting payment link with their buyer to pay for goods and services.
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param body An object containing the fields to POST for the request.
+  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+  - @param body An object containing the fields to POST for the request.
 
 See the corresponding object definition for field details.
 @return CreatePaymentLinkResponse
@@ -210,8 +210,9 @@ func (a *CheckoutApiService) CreatePaymentLink(ctx context.Context, body CreateP
 /*
 CheckoutApiService DeletePaymentLink
 Deletes a payment link.
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param id The ID of the payment link to delete.
+  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+  - @param id The ID of the payment link to delete.
+
 @return DeletePaymentLinkResponse
 */
 func (a *CheckoutApiService) DeletePaymentLink(ctx context.Context, id string) (DeletePaymentLinkResponse, *http.Response, error) {
@@ -395,8 +396,9 @@ func (a *CheckoutApiService) ListPaymentLinks(ctx context.Context, localVarOptio
 /*
 CheckoutApiService RetrievePaymentLink
 Retrieves a payment link.
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param id The ID of link to retrieve.
+  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+  - @param id The ID of link to retrieve.
+
 @return RetrievePaymentLinkResponse
 */
 func (a *CheckoutApiService) RetrievePaymentLink(ctx context.Context, id string) (RetrievePaymentLinkResponse, *http.Response, error) {
@@ -481,11 +483,12 @@ func (a *CheckoutApiService) RetrievePaymentLink(ctx context.Context, id string)
 /*
 CheckoutApiService UpdatePaymentLink
 Updates a payment link. You can update the &#x60;payment_link&#x60; fields such as &#x60;description&#x60;, &#x60;checkout_options&#x60;, and  &#x60;pre_populated_data&#x60;. You cannot update other fields such as the &#x60;order_id&#x60;, &#x60;version&#x60;, &#x60;URL&#x60;, or &#x60;timestamp&#x60; field.
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param body An object containing the fields to POST for the request.
+  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+  - @param body An object containing the fields to POST for the request.
 
 See the corresponding object definition for field details.
- * @param id The ID of the payment link to update.
+  - @param id The ID of the payment link to update.
+
 @return UpdatePaymentLinkResponse
 */
 func (a *CheckoutApiService) UpdatePaymentLink(ctx context.Context, body UpdatePaymentLinkRequest, id string) (UpdatePaymentLinkResponse, *http.Response, error) {

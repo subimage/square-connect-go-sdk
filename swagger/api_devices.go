@@ -29,8 +29,8 @@ type DevicesApiService service
 /*
 DevicesApiService CreateDeviceCode
 Creates a DeviceCode that can be used to login to a Square Terminal device to enter the connected terminal mode.
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param body An object containing the fields to POST for the request.
+  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+  - @param body An object containing the fields to POST for the request.
 
 See the corresponding object definition for field details.
 @return CreateDeviceCodeResponse
@@ -118,8 +118,9 @@ func (a *DevicesApiService) CreateDeviceCode(ctx context.Context, body CreateDev
 /*
 DevicesApiService GetDeviceCode
 Retrieves DeviceCode with the associated ID.
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param id The unique identifier for the device code.
+  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+  - @param id The unique identifier for the device code.
+
 @return GetDeviceCodeResponse
 */
 func (a *DevicesApiService) GetDeviceCode(ctx context.Context, id string) (GetDeviceCodeResponse, *http.Response, error) {

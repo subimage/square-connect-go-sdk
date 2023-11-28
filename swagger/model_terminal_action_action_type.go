@@ -26,6 +26,4 @@ const (
 	RECEIPT_TerminalActionActionType                 TerminalActionActionType = "RECEIPT"
 	DATA_COLLECTION_TerminalActionActionType         TerminalActionActionType = "DATA_COLLECTION"
 	SELECT__TerminalActionActionType                 TerminalActionActionType = "SELECT"
-	STACK_TerminalActionActionType                   TerminalActionActionType = "STACK"
-	CONFIG_TerminalActionActionType                  TerminalActionActionType = "CONFIG"
 )

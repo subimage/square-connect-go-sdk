@@ -12,12 +12,11 @@ package swagger
 import (
 	"context"
 	"fmt"
+	"github.com/antihax/optional"
 	"io/ioutil"
 	"net/http"
 	"net/url"
 	"strings"
-
-	"github.com/antihax/optional"
 )
 
 // Linger please
@@ -129,8 +128,9 @@ func (a *CustomerSegmentsApiService) ListCustomerSegments(ctx context.Context, l
 /*
 CustomerSegmentsApiService RetrieveCustomerSegment
 Retrieves a specific customer segment as identified by the &#x60;segment_id&#x60; value.
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param segmentId The Square-issued ID of the customer segment.
+  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+  - @param segmentId The Square-issued ID of the customer segment.
+
 @return RetrieveCustomerSegmentResponse
 */
 func (a *CustomerSegmentsApiService) RetrieveCustomerSegment(ctx context.Context, segmentId string) (RetrieveCustomerSegmentResponse, *http.Response, error) {

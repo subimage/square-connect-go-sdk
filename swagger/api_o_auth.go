@@ -12,12 +12,11 @@ package swagger
 import (
 	"context"
 	"fmt"
+	"github.com/antihax/optional"
 	"io/ioutil"
 	"net/http"
 	"net/url"
 	"strings"
-
-	"github.com/antihax/optional"
 )
 
 // Linger please
@@ -146,8 +145,8 @@ func (a *OAuthApiService) Authorize(ctx context.Context, clientId string, localV
 /*
 OAuthApiService ObtainToken
 Returns an OAuth access token and a refresh token unless the  &#x60;short_lived&#x60; parameter is set to &#x60;true&#x60;, in which case the endpoint  returns only an access token.  The &#x60;grant_type&#x60; parameter specifies the type of OAuth request. If  &#x60;grant_type&#x60; is &#x60;authorization_code&#x60;, you must include the authorization  code you received when a seller granted you authorization. If &#x60;grant_type&#x60;  is &#x60;refresh_token&#x60;, you must provide a valid refresh token. If you are using  an old version of the Square APIs (prior to March 13, 2019), &#x60;grant_type&#x60;  can be &#x60;migration_token&#x60; and you must provide a valid migration token.  You can use the &#x60;scopes&#x60; parameter to limit the set of permissions granted  to the access token and refresh token. You can use the &#x60;short_lived&#x60; parameter  to create an access token that expires in 24 hours.  __Note:__ OAuth tokens should be encrypted and stored on a secure server.  Application clients should never interact directly with OAuth tokens.
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param body An object containing the fields to POST for the request.
+  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+  - @param body An object containing the fields to POST for the request.
 
 See the corresponding object definition for field details.
 @return ObtainTokenResponse
@@ -235,11 +234,12 @@ func (a *OAuthApiService) ObtainToken(ctx context.Context, body ObtainTokenReque
 /*
 OAuthApiService RenewToken
 &#x60;RenewToken&#x60; is deprecated. For information about refreshing OAuth access tokens, see [Migrate from Renew to Refresh OAuth Tokens](https://developer.squareup.com/docs/oauth-api/migrate-to-refresh-tokens).  Renews an OAuth access token before it expires.  OAuth access tokens besides your application&#x27;s personal access token expire after 30 days. You can also renew expired tokens within 15 days of their expiration. You cannot renew an access token that has been expired for more than 15 days. Instead, the associated user must recomplete the OAuth flow from the beginning.  __Important:__ The &#x60;Authorization&#x60; header for this endpoint must have the following format:  &#x60;&#x60;&#x60; Authorization: Client APPLICATION_SECRET &#x60;&#x60;&#x60;  Replace &#x60;APPLICATION_SECRET&#x60; with the application secret on the Credentials page in the [Developer Dashboard](https://developer.squareup.com/apps).
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param body An object containing the fields to POST for the request.
+  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+  - @param body An object containing the fields to POST for the request.
 
 See the corresponding object definition for field details.
- * @param clientId Your application ID, which is available in the OAuth page in the [Developer Dashboard](https://developer.squareup.com/apps).
+  - @param clientId Your application ID, which is available in the OAuth page in the [Developer Dashboard](https://developer.squareup.com/apps).
+
 @return RenewTokenResponse
 */
 func (a *OAuthApiService) RenewToken(ctx context.Context, body RenewTokenRequest, clientId string) (RenewTokenResponse, *http.Response, error) {
@@ -339,8 +339,8 @@ func (a *OAuthApiService) RenewToken(ctx context.Context, body RenewTokenRequest
 /*
 OAuthApiService RevokeToken
 Revokes an access token generated with the OAuth flow.  If an account has more than one OAuth access token for your application, this endpoint revokes all of them, regardless of which token you specify. When an OAuth access token is revoked, all of the active subscriptions associated with that OAuth token are canceled immediately.  __Important:__ The &#x60;Authorization&#x60; header for this endpoint must have the following format:  &#x60;&#x60;&#x60; Authorization: Client APPLICATION_SECRET &#x60;&#x60;&#x60;  Replace &#x60;APPLICATION_SECRET&#x60; with the application secret on the OAuth page for your application on the Developer Dashboard.
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param body An object containing the fields to POST for the request.
+  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+  - @param body An object containing the fields to POST for the request.
 
 See the corresponding object definition for field details.
 @return RevokeTokenResponse

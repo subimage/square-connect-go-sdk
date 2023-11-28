@@ -29,8 +29,9 @@ type PaymentsApiService service
 /*
 PaymentsApiService CancelPayment
 Cancels (voids) a payment. You can use this endpoint to cancel a payment with  the APPROVED &#x60;status&#x60;.
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param paymentId The ID of the payment to cancel.
+  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+  - @param paymentId The ID of the payment to cancel.
+
 @return CancelPaymentResponse
 */
 func (a *PaymentsApiService) CancelPayment(ctx context.Context, paymentId string) (CancelPaymentResponse, *http.Response, error) {
@@ -115,8 +116,8 @@ func (a *PaymentsApiService) CancelPayment(ctx context.Context, paymentId string
 /*
 PaymentsApiService CancelPaymentByIdempotencyKey
 Cancels (voids) a payment identified by the idempotency key that is specified in the request.  Use this method when the status of a &#x60;CreatePayment&#x60; request is unknown (for example, after you send a &#x60;CreatePayment&#x60; request, a network error occurs and you do not get a response). In this case, you can direct Square to cancel the payment using this endpoint. In the request, you provide the same idempotency key that you provided in your &#x60;CreatePayment&#x60; request that you want to cancel. After canceling the payment, you can submit your &#x60;CreatePayment&#x60; request again.  Note that if no payment with the specified idempotency key is found, no action is taken and the endpoint returns successfully.
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param body An object containing the fields to POST for the request.
+  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+  - @param body An object containing the fields to POST for the request.
 
 See the corresponding object definition for field details.
 @return CancelPaymentByIdempotencyKeyResponse
@@ -204,11 +205,12 @@ func (a *PaymentsApiService) CancelPaymentByIdempotencyKey(ctx context.Context, 
 /*
 PaymentsApiService CompletePayment
 Completes (captures) a payment. By default, payments are set to complete immediately after they are created.  You can use this endpoint to complete a payment with the APPROVED &#x60;status&#x60;.
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param body An object containing the fields to POST for the request.
+  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+  - @param body An object containing the fields to POST for the request.
 
 See the corresponding object definition for field details.
- * @param paymentId The unique ID identifying the payment to be completed.
+  - @param paymentId The unique ID identifying the payment to be completed.
+
 @return CompletePaymentResponse
 */
 func (a *PaymentsApiService) CompletePayment(ctx context.Context, body CompletePaymentRequest, paymentId string) (CompletePaymentResponse, *http.Response, error) {
@@ -295,8 +297,8 @@ func (a *PaymentsApiService) CompletePayment(ctx context.Context, body CompleteP
 /*
 PaymentsApiService CreatePayment
 Creates a payment using the provided source. You can use this endpoint  to charge a card (credit/debit card or     Square gift card) or record a payment that the seller received outside of Square  (cash payment from a buyer or a payment that an external entity  processed on behalf of the seller).  The endpoint creates a  &#x60;Payment&#x60; object and returns it in the response.
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param body An object containing the fields to POST for the request.
+  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+  - @param body An object containing the fields to POST for the request.
 
 See the corresponding object definition for field details.
 @return CreatePaymentResponse
@@ -384,8 +386,9 @@ func (a *PaymentsApiService) CreatePayment(ctx context.Context, body CreatePayme
 /*
 PaymentsApiService GetPayment
 Retrieves details for a specific payment.
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param paymentId A unique ID for the desired payment.
+  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+  - @param paymentId A unique ID for the desired payment.
+
 @return GetPaymentResponse
 */
 func (a *PaymentsApiService) GetPayment(ctx context.Context, paymentId string) (GetPaymentResponse, *http.Response, error) {
@@ -604,11 +607,12 @@ func (a *PaymentsApiService) ListPayments(ctx context.Context, localVarOptionals
 /*
 PaymentsApiService UpdatePayment
 Updates a payment with the APPROVED status. You can update the &#x60;amount_money&#x60; and &#x60;tip_money&#x60; using this endpoint.
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param body An object containing the fields to POST for the request.
+  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+  - @param body An object containing the fields to POST for the request.
 
 See the corresponding object definition for field details.
- * @param paymentId The ID of the payment to update.
+  - @param paymentId The ID of the payment to update.
+
 @return UpdatePaymentResponse
 */
 func (a *PaymentsApiService) UpdatePayment(ctx context.Context, body UpdatePaymentRequest, paymentId string) (UpdatePaymentResponse, *http.Response, error) {

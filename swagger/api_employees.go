@@ -136,8 +136,9 @@ func (a *EmployeesApiService) ListEmployees(ctx context.Context, localVarOptiona
 
 /*
 EmployeesApiService RetrieveEmployee
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param id UUID for the employee that was requested.
+  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+  - @param id UUID for the employee that was requested.
+
 @return RetrieveEmployeeResponse
 */
 func (a *EmployeesApiService) RetrieveEmployee(ctx context.Context, id string) (RetrieveEmployeeResponse, *http.Response, error) {

@@ -12,12 +12,11 @@ package swagger
 import (
 	"context"
 	"fmt"
+	"github.com/antihax/optional"
 	"io/ioutil"
 	"net/http"
 	"net/url"
 	"strings"
-
-	"github.com/antihax/optional"
 )
 
 // Linger please
@@ -30,8 +29,8 @@ type CustomerGroupsApiService service
 /*
 CustomerGroupsApiService CreateCustomerGroup
 Creates a new customer group for a business.  The request must include the &#x60;name&#x60; value of the group.
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param body An object containing the fields to POST for the request.
+  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+  - @param body An object containing the fields to POST for the request.
 
 See the corresponding object definition for field details.
 @return CreateCustomerGroupResponse
@@ -119,8 +118,9 @@ func (a *CustomerGroupsApiService) CreateCustomerGroup(ctx context.Context, body
 /*
 CustomerGroupsApiService DeleteCustomerGroup
 Deletes a customer group as identified by the &#x60;group_id&#x60; value.
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param groupId The ID of the customer group to delete.
+  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+  - @param groupId The ID of the customer group to delete.
+
 @return DeleteCustomerGroupResponse
 */
 func (a *CustomerGroupsApiService) DeleteCustomerGroup(ctx context.Context, groupId string) (DeleteCustomerGroupResponse, *http.Response, error) {
@@ -304,8 +304,9 @@ func (a *CustomerGroupsApiService) ListCustomerGroups(ctx context.Context, local
 /*
 CustomerGroupsApiService RetrieveCustomerGroup
 Retrieves a specific customer group as identified by the &#x60;group_id&#x60; value.
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param groupId The ID of the customer group to retrieve.
+  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+  - @param groupId The ID of the customer group to retrieve.
+
 @return RetrieveCustomerGroupResponse
 */
 func (a *CustomerGroupsApiService) RetrieveCustomerGroup(ctx context.Context, groupId string) (RetrieveCustomerGroupResponse, *http.Response, error) {
@@ -390,11 +391,12 @@ func (a *CustomerGroupsApiService) RetrieveCustomerGroup(ctx context.Context, gr
 /*
 CustomerGroupsApiService UpdateCustomerGroup
 Updates a customer group as identified by the &#x60;group_id&#x60; value.
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param body An object containing the fields to POST for the request.
+  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+  - @param body An object containing the fields to POST for the request.
 
 See the corresponding object definition for field details.
- * @param groupId The ID of the customer group to update.
+  - @param groupId The ID of the customer group to update.
+
 @return UpdateCustomerGroupResponse
 */
 func (a *CustomerGroupsApiService) UpdateCustomerGroup(ctx context.Context, body UpdateCustomerGroupRequest, groupId string) (UpdateCustomerGroupResponse, *http.Response, error) {

@@ -28,11 +28,12 @@ type TerminalApiService service
 /*
 TerminalApiService CancelTerminalAction
 Cancels a Terminal action request if the status of the request permits it.
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param body An object containing the fields to POST for the request.
+  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+  - @param body An object containing the fields to POST for the request.
 
 See the corresponding object definition for field details.
- * @param actionId Unique ID for the desired &#x60;TerminalAction&#x60;
+  - @param actionId Unique ID for the desired &#x60;TerminalAction&#x60;
+
 @return CancelTerminalActionResponse
 */
 func (a *TerminalApiService) CancelTerminalAction(ctx context.Context, body CancelTerminalActionRequest, actionId string) (CancelTerminalActionResponse, *http.Response, error) {
@@ -119,11 +120,12 @@ func (a *TerminalApiService) CancelTerminalAction(ctx context.Context, body Canc
 /*
 TerminalApiService CancelTerminalCheckout
 Cancels a Terminal checkout request if the status of the request permits it.
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param body An object containing the fields to POST for the request.
+  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+  - @param body An object containing the fields to POST for the request.
 
 See the corresponding object definition for field details.
- * @param checkoutId The unique ID for the desired &#x60;TerminalCheckout&#x60;.
+  - @param checkoutId The unique ID for the desired &#x60;TerminalCheckout&#x60;.
+
 @return CancelTerminalCheckoutResponse
 */
 func (a *TerminalApiService) CancelTerminalCheckout(ctx context.Context, body CancelTerminalCheckoutRequest, checkoutId string) (CancelTerminalCheckoutResponse, *http.Response, error) {
@@ -210,11 +212,12 @@ func (a *TerminalApiService) CancelTerminalCheckout(ctx context.Context, body Ca
 /*
 TerminalApiService CancelTerminalRefund
 Cancels an Interac Terminal refund request by refund request ID if the status of the request permits it.
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param body An object containing the fields to POST for the request.
+  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+  - @param body An object containing the fields to POST for the request.
 
 See the corresponding object definition for field details.
- * @param terminalRefundId The unique ID for the desired &#x60;TerminalRefund&#x60;.
+  - @param terminalRefundId The unique ID for the desired &#x60;TerminalRefund&#x60;.
+
 @return CancelTerminalRefundResponse
 */
 func (a *TerminalApiService) CancelTerminalRefund(ctx context.Context, body CancelTerminalRefundRequest, terminalRefundId string) (CancelTerminalRefundResponse, *http.Response, error) {
@@ -301,8 +304,8 @@ func (a *TerminalApiService) CancelTerminalRefund(ctx context.Context, body Canc
 /*
 TerminalApiService CreateTerminalAction
 Creates a Terminal action request and sends it to the specified device.
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param body An object containing the fields to POST for the request.
+  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+  - @param body An object containing the fields to POST for the request.
 
 See the corresponding object definition for field details.
 @return CreateTerminalActionResponse
@@ -390,8 +393,8 @@ func (a *TerminalApiService) CreateTerminalAction(ctx context.Context, body Crea
 /*
 TerminalApiService CreateTerminalCheckout
 Creates a Terminal checkout request and sends it to the specified device to take a payment for the requested amount.
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param body An object containing the fields to POST for the request.
+  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+  - @param body An object containing the fields to POST for the request.
 
 See the corresponding object definition for field details.
 @return CreateTerminalCheckoutResponse
@@ -479,8 +482,8 @@ func (a *TerminalApiService) CreateTerminalCheckout(ctx context.Context, body Cr
 /*
 TerminalApiService CreateTerminalRefund
 Creates a request to refund an Interac payment completed on a Square Terminal. Refunds for Interac payments on a Square Terminal are supported only for Interac debit cards in Canada. Other refunds for Terminal payments should use the Refunds API. For more information, see [Refunds API](api:Refunds).
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param body An object containing the fields to POST for the request.
+  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+  - @param body An object containing the fields to POST for the request.
 
 See the corresponding object definition for field details.
 @return CreateTerminalRefundResponse
@@ -568,8 +571,9 @@ func (a *TerminalApiService) CreateTerminalRefund(ctx context.Context, body Crea
 /*
 TerminalApiService GetTerminalAction
 Retrieves a Terminal action request by &#x60;action_id&#x60;. Terminal action requests are available for 30 days.
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param actionId Unique ID for the desired &#x60;TerminalAction&#x60;
+  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+  - @param actionId Unique ID for the desired &#x60;TerminalAction&#x60;
+
 @return GetTerminalActionResponse
 */
 func (a *TerminalApiService) GetTerminalAction(ctx context.Context, actionId string) (GetTerminalActionResponse, *http.Response, error) {
@@ -654,8 +658,9 @@ func (a *TerminalApiService) GetTerminalAction(ctx context.Context, actionId str
 /*
 TerminalApiService GetTerminalCheckout
 Retrieves a Terminal checkout request by &#x60;checkout_id&#x60;. Terminal checkout requests are available for 30 days.
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param checkoutId The unique ID for the desired &#x60;TerminalCheckout&#x60;.
+  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+  - @param checkoutId The unique ID for the desired &#x60;TerminalCheckout&#x60;.
+
 @return GetTerminalCheckoutResponse
 */
 func (a *TerminalApiService) GetTerminalCheckout(ctx context.Context, checkoutId string) (GetTerminalCheckoutResponse, *http.Response, error) {
@@ -740,8 +745,9 @@ func (a *TerminalApiService) GetTerminalCheckout(ctx context.Context, checkoutId
 /*
 TerminalApiService GetTerminalRefund
 Retrieves an Interac Terminal refund object by ID. Terminal refund objects are available for 30 days.
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param terminalRefundId The unique ID for the desired &#x60;TerminalRefund&#x60;.
+  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+  - @param terminalRefundId The unique ID for the desired &#x60;TerminalRefund&#x60;.
+
 @return GetTerminalRefundResponse
 */
 func (a *TerminalApiService) GetTerminalRefund(ctx context.Context, terminalRefundId string) (GetTerminalRefundResponse, *http.Response, error) {
@@ -826,8 +832,8 @@ func (a *TerminalApiService) GetTerminalRefund(ctx context.Context, terminalRefu
 /*
 TerminalApiService SearchTerminalActions
 Retrieves a filtered list of Terminal action requests created by the account making the request. Terminal action requests are available for 30 days.
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param body An object containing the fields to POST for the request.
+  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+  - @param body An object containing the fields to POST for the request.
 
 See the corresponding object definition for field details.
 @return SearchTerminalActionsResponse
@@ -915,8 +921,8 @@ func (a *TerminalApiService) SearchTerminalActions(ctx context.Context, body Sea
 /*
 TerminalApiService SearchTerminalCheckouts
 Returns a filtered list of Terminal checkout requests created by the application making the request. Only Terminal checkout requests created for the merchant scoped to the OAuth token are returned. Terminal checkout requests are available for 30 days.
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param body An object containing the fields to POST for the request.
+  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+  - @param body An object containing the fields to POST for the request.
 
 See the corresponding object definition for field details.
 @return SearchTerminalCheckoutsResponse
@@ -1004,8 +1010,8 @@ func (a *TerminalApiService) SearchTerminalCheckouts(ctx context.Context, body S
 /*
 TerminalApiService SearchTerminalRefunds
 Retrieves a filtered list of Interac Terminal refund requests created by the seller making the request. Terminal refund requests are available for 30 days.
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param body An object containing the fields to POST for the request.
+  - @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+  - @param body An object containing the fields to POST for the request.
 
 See the corresponding object definition for field details.
 @return SearchTerminalRefundsResponse

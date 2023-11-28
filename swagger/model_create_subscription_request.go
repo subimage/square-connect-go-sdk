@@ -16,7 +16,7 @@ type CreateSubscriptionRequest struct {
 	// The ID of the location the subscription is associated with.
 	LocationId string `json:"location_id"`
 	// The ID of the subscription plan created using the Catalog API. For more information, see [Set Up and Manage a Subscription Plan](https://developer.squareup.com/docs/subscriptions-api/setup-plan) and  [Subscriptions Walkthrough](https://developer.squareup.com/docs/subscriptions-api/walkthrough).
-	PlanId string `json:"plan_id"`
+	PlanVariationId string `json:"plan_variation_id"`
 	// The ID of the [customer](entity:Customer) subscribing to the subscription plan.
 	CustomerId string `json:"customer_id"`
 	// The `YYYY-MM-DD`-formatted date to start the subscription.  If it is unspecified, the subscription starts immediately.

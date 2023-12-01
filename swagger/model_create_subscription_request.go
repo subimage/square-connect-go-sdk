@@ -9,8 +9,6 @@
  */
 package swagger
 
-import "time"
-
 // Defines input parameters in a request to the  [CreateSubscription](api-endpoint:Subscriptions-CreateSubscription) endpoint.
 //type CreateSubscriptionRequest struct {
 //	// A unique string that identifies this `CreateSubscription` request. If you do not provide a unique string (or provide an empty string as the value), the endpoint treats each request as independent.  For more information, see [Idempotency keys](https://developer.squareup.com/docs/working-with-apis/idempotency).
@@ -36,21 +34,20 @@ import "time"
 //}
 
 type CreateSubscriptionRequest struct {
-	IdempotencyKey  string    `json:"idempotency_key,omitempty"`
-	LocationID      string    `json:"location_id"`
-	PlanVariationID string    `json:"plan_variation_id"`
-	CustomerID      string    `json:"customer_id"`
-	StartDate       string    `json:"start_date"`
-	Status          string    `json:"status"`
-	Version         int       `json:"version"`
-	CreatedAt       time.Time `json:"created_at"`
-	CardID          string    `json:"card_id"`
-	Phases          []struct {
-		UID             string `json:"uid"`
-		Ordinal         int    `json:"ordinal"`
-		OrderTemplateID string `json:"order_template_id"`
-		PlanPhaseUID    string `json:"plan_phase_uid"`
-	} `json:"phases"`
-	Timezone string              `json:"timezone"`
-	Source   *SubscriptionSource `json:"source"`
+	IdempotencyKey  string                           `json:"idempotency_key,omitempty"`
+	LocationID      string                           `json:"location_id"`
+	PlanVariationID string                           `json:"plan_variation_id"`
+	CustomerID      string                           `json:"customer_id"`
+	StartDate       string                           `json:"start_date"`
+	CardID          string                           `json:"card_id"`
+	Phases          []CreateSubscriptionRequestPhase `json:"phases"`
+	Timezone        string                           `json:"timezone"`
+	Source          *SubscriptionSource              `json:"source"`
+}
+
+type CreateSubscriptionRequestPhase struct {
+	UID             string `json:"uid"`
+	Ordinal         int    `json:"ordinal"`
+	OrderTemplateID string `json:"order_template_id"`
+	PlanPhaseUID    string `json:"plan_phase_uid"`
 }

@@ -9,26 +9,48 @@
  */
 package swagger
 
+import "time"
+
 // Defines input parameters in a request to the  [CreateSubscription](api-endpoint:Subscriptions-CreateSubscription) endpoint.
+//type CreateSubscriptionRequest struct {
+//	// A unique string that identifies this `CreateSubscription` request. If you do not provide a unique string (or provide an empty string as the value), the endpoint treats each request as independent.  For more information, see [Idempotency keys](https://developer.squareup.com/docs/working-with-apis/idempotency).
+//	IdempotencyKey string `json:"idempotency_key,omitempty"`
+//	// The ID of the location the subscription is associated with.
+//	LocationId string `json:"location_id"`
+//	// The ID of the subscription plan created using the Catalog API. For more information, see [Set Up and Manage a Subscription Plan](https://developer.squareup.com/docs/subscriptions-api/setup-plan) and  [Subscriptions Walkthrough](https://developer.squareup.com/docs/subscriptions-api/walkthrough).
+//	PlanVariationId string `json:"plan_variation_id"`
+//	// The ID of the [customer](entity:Customer) subscribing to the subscription plan.
+//	CustomerId string `json:"customer_id"`
+//	// The `YYYY-MM-DD`-formatted date to start the subscription.  If it is unspecified, the subscription starts immediately.
+//	StartDate string `json:"start_date,omitempty"`
+//	// The `YYYY-MM-DD`-formatted date when the newly created subscription is scheduled for cancellation.   This date overrides the cancellation date set in the plan configuration. If the cancellation date is earlier than the end date of a subscription cycle, the subscription stops at the canceled date and the subscriber is sent a prorated invoice at the beginning of the canceled cycle.   When the subscription plan of the newly created subscription has a fixed number of cycles and the `canceled_date` occurs before the subscription plan expires, the specified `canceled_date` sets the date when the subscription  stops through the end of the last cycle.
+//	CanceledDate string `json:"canceled_date,omitempty"`
+//	// The tax to add when billing the subscription. The percentage is expressed in decimal form, using a `'.'` as the decimal separator and without a `'%'` sign. For example, a value of 7.5 corresponds to 7.5%.
+//	TaxPercentage      string `json:"tax_percentage,omitempty"`
+//	PriceOverrideMoney *Money `json:"price_override_money,omitempty"`
+//	// The ID of the [subscriber's](entity:Customer) [card](entity:Card) to charge. If it is not specified, the subscriber receives an invoice via email. For an example to create a customer profile for a subscriber and add a card on file, see [Subscriptions Walkthrough](https://developer.squareup.com/docs/subscriptions-api/walkthrough).
+//	CardId string `json:"card_id,omitempty"`
+//	// The timezone that is used in date calculations for the subscription. If unset, defaults to the location timezone. If a timezone is not configured for the location, defaults to \"America/New_York\". Format: the IANA Timezone Database identifier for the location timezone. For a list of time zones, see [List of tz database time zones](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones).
+//	Timezone string              `json:"timezone,omitempty"`
+//	Source   *SubscriptionSource `json:"source,omitempty"`
+//}
+
 type CreateSubscriptionRequest struct {
-	// A unique string that identifies this `CreateSubscription` request. If you do not provide a unique string (or provide an empty string as the value), the endpoint treats each request as independent.  For more information, see [Idempotency keys](https://developer.squareup.com/docs/working-with-apis/idempotency).
-	IdempotencyKey string `json:"idempotency_key,omitempty"`
-	// The ID of the location the subscription is associated with.
-	LocationId string `json:"location_id"`
-	// The ID of the subscription plan created using the Catalog API. For more information, see [Set Up and Manage a Subscription Plan](https://developer.squareup.com/docs/subscriptions-api/setup-plan) and  [Subscriptions Walkthrough](https://developer.squareup.com/docs/subscriptions-api/walkthrough).
-	PlanVariationId string `json:"plan_variation_id"`
-	// The ID of the [customer](entity:Customer) subscribing to the subscription plan.
-	CustomerId string `json:"customer_id"`
-	// The `YYYY-MM-DD`-formatted date to start the subscription.  If it is unspecified, the subscription starts immediately.
-	StartDate string `json:"start_date,omitempty"`
-	// The `YYYY-MM-DD`-formatted date when the newly created subscription is scheduled for cancellation.   This date overrides the cancellation date set in the plan configuration. If the cancellation date is earlier than the end date of a subscription cycle, the subscription stops at the canceled date and the subscriber is sent a prorated invoice at the beginning of the canceled cycle.   When the subscription plan of the newly created subscription has a fixed number of cycles and the `canceled_date` occurs before the subscription plan expires, the specified `canceled_date` sets the date when the subscription  stops through the end of the last cycle.
-	CanceledDate string `json:"canceled_date,omitempty"`
-	// The tax to add when billing the subscription. The percentage is expressed in decimal form, using a `'.'` as the decimal separator and without a `'%'` sign. For example, a value of 7.5 corresponds to 7.5%.
-	TaxPercentage      string `json:"tax_percentage,omitempty"`
-	PriceOverrideMoney *Money `json:"price_override_money,omitempty"`
-	// The ID of the [subscriber's](entity:Customer) [card](entity:Card) to charge. If it is not specified, the subscriber receives an invoice via email. For an example to create a customer profile for a subscriber and add a card on file, see [Subscriptions Walkthrough](https://developer.squareup.com/docs/subscriptions-api/walkthrough).
-	CardId string `json:"card_id,omitempty"`
-	// The timezone that is used in date calculations for the subscription. If unset, defaults to the location timezone. If a timezone is not configured for the location, defaults to \"America/New_York\". Format: the IANA Timezone Database identifier for the location timezone. For a list of time zones, see [List of tz database time zones](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones).
-	Timezone string              `json:"timezone,omitempty"`
-	Source   *SubscriptionSource `json:"source,omitempty"`
+	IdempotencyKey  string    `json:"idempotency_key,omitempty"`
+	LocationID      string    `json:"location_id"`
+	PlanVariationID string    `json:"plan_variation_id"`
+	CustomerID      string    `json:"customer_id"`
+	StartDate       string    `json:"start_date"`
+	Status          string    `json:"status"`
+	Version         int       `json:"version"`
+	CreatedAt       time.Time `json:"created_at"`
+	CardID          string    `json:"card_id"`
+	Phases          []struct {
+		UID             string `json:"uid"`
+		Ordinal         int    `json:"ordinal"`
+		OrderTemplateID string `json:"order_template_id"`
+		PlanPhaseUID    string `json:"plan_phase_uid"`
+	} `json:"phases"`
+	Timezone string              `json:"timezone"`
+	Source   *SubscriptionSource `json:"source"`
 }

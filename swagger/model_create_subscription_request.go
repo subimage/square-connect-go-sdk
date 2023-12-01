@@ -35,19 +35,18 @@ package swagger
 
 type CreateSubscriptionRequest struct {
 	IdempotencyKey  string                           `json:"idempotency_key,omitempty"`
-	LocationID      string                           `json:"location_id"`
-	PlanVariationID string                           `json:"plan_variation_id"`
-	CustomerID      string                           `json:"customer_id"`
-	StartDate       string                           `json:"start_date"`
-	CardID          string                           `json:"card_id"`
-	Phases          []CreateSubscriptionRequestPhase `json:"phases"`
-	Timezone        string                           `json:"timezone"`
-	Source          *SubscriptionSource              `json:"source"`
+	LocationID      string                           `json:"location_id,omitempty"`
+	PlanVariationID string                           `json:"plan_variation_id,omitempty"`
+	CustomerID      string                           `json:"customer_id,omitempty"`
+	StartDate       string                           `json:"start_date,omitempty"`
+	CardID          string                           `json:"card_id,omitempty"`
+	Phases          []CreateSubscriptionRequestPhase `json:"phases,omitempty"`
+	Timezone        string                           `json:"timezone,omitempty"`
+	Source          *SubscriptionSource              `json:"source,omitempty"`
 }
 
 type CreateSubscriptionRequestPhase struct {
-	UID             string `json:"uid"`
 	Ordinal         int    `json:"ordinal"`
-	OrderTemplateID string `json:"order_template_id"`
-	PlanPhaseUID    string `json:"plan_phase_uid"`
+	OrderTemplateID string `json:"order_template_id,omitempty"`
+	PlanPhaseUID    string `json:"plan_phase_uid,omitempty"`
 }

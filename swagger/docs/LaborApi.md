@@ -2,43 +2,39 @@
 
 All URIs are relative to *https://connect.squareup.com*
 
- Method                                                       | HTTP request                             | Description          
---------------------------------------------------------------|------------------------------------------|----------------------
- [**CreateBreakType**](LaborApi.md#CreateBreakType)           | **Post** /v2/labor/break-types           | CreateBreakType      
- [**CreateShift**](LaborApi.md#CreateShift)                   | **Post** /v2/labor/shifts                | CreateShift          
- [**DeleteBreakType**](LaborApi.md#DeleteBreakType)           | **Delete** /v2/labor/break-types/{id}    | DeleteBreakType      
- [**DeleteShift**](LaborApi.md#DeleteShift)                   | **Delete** /v2/labor/shifts/{id}         | DeleteShift          
- [**GetBreakType**](LaborApi.md#GetBreakType)                 | **Get** /v2/labor/break-types/{id}       | GetBreakType         
- [**GetEmployeeWage**](LaborApi.md#GetEmployeeWage)           | **Get** /v2/labor/employee-wages/{id}    | GetEmployeeWage      
- [**GetShift**](LaborApi.md#GetShift)                         | **Get** /v2/labor/shifts/{id}            | GetShift             
- [**GetTeamMemberWage**](LaborApi.md#GetTeamMemberWage)       | **Get** /v2/labor/team-member-wages/{id} | GetTeamMemberWage    
- [**ListBreakTypes**](LaborApi.md#ListBreakTypes)             | **Get** /v2/labor/break-types            | ListBreakTypes       
- [**ListEmployeeWages**](LaborApi.md#ListEmployeeWages)       | **Get** /v2/labor/employee-wages         | ListEmployeeWages    
- [**ListTeamMemberWages**](LaborApi.md#ListTeamMemberWages)   | **Get** /v2/labor/team-member-wages      | ListTeamMemberWages  
- [**ListWorkweekConfigs**](LaborApi.md#ListWorkweekConfigs)   | **Get** /v2/labor/workweek-configs       | ListWorkweekConfigs  
- [**SearchShifts**](LaborApi.md#SearchShifts)                 | **Post** /v2/labor/shifts/search         | SearchShifts         
- [**UpdateBreakType**](LaborApi.md#UpdateBreakType)           | **Put** /v2/labor/break-types/{id}       | UpdateBreakType      
- [**UpdateShift**](LaborApi.md#UpdateShift)                   | **Put** /v2/labor/shifts/{id}            | UpdateShift          
- [**UpdateWorkweekConfig**](LaborApi.md#UpdateWorkweekConfig) | **Put** /v2/labor/workweek-configs/{id}  | UpdateWorkweekConfig 
+Method | HTTP request | Description
+------------- | ------------- | -------------
+[**CreateBreakType**](LaborApi.md#CreateBreakType) | **Post** /v2/labor/break-types | CreateBreakType
+[**CreateShift**](LaborApi.md#CreateShift) | **Post** /v2/labor/shifts | CreateShift
+[**DeleteBreakType**](LaborApi.md#DeleteBreakType) | **Delete** /v2/labor/break-types/{id} | DeleteBreakType
+[**DeleteShift**](LaborApi.md#DeleteShift) | **Delete** /v2/labor/shifts/{id} | DeleteShift
+[**GetBreakType**](LaborApi.md#GetBreakType) | **Get** /v2/labor/break-types/{id} | GetBreakType
+[**GetEmployeeWage**](LaborApi.md#GetEmployeeWage) | **Get** /v2/labor/employee-wages/{id} | GetEmployeeWage
+[**GetShift**](LaborApi.md#GetShift) | **Get** /v2/labor/shifts/{id} | GetShift
+[**GetTeamMemberWage**](LaborApi.md#GetTeamMemberWage) | **Get** /v2/labor/team-member-wages/{id} | GetTeamMemberWage
+[**ListBreakTypes**](LaborApi.md#ListBreakTypes) | **Get** /v2/labor/break-types | ListBreakTypes
+[**ListEmployeeWages**](LaborApi.md#ListEmployeeWages) | **Get** /v2/labor/employee-wages | ListEmployeeWages
+[**ListTeamMemberWages**](LaborApi.md#ListTeamMemberWages) | **Get** /v2/labor/team-member-wages | ListTeamMemberWages
+[**ListWorkweekConfigs**](LaborApi.md#ListWorkweekConfigs) | **Get** /v2/labor/workweek-configs | ListWorkweekConfigs
+[**SearchShifts**](LaborApi.md#SearchShifts) | **Post** /v2/labor/shifts/search | SearchShifts
+[**UpdateBreakType**](LaborApi.md#UpdateBreakType) | **Put** /v2/labor/break-types/{id} | UpdateBreakType
+[**UpdateShift**](LaborApi.md#UpdateShift) | **Put** /v2/labor/shifts/{id} | UpdateShift
+[**UpdateWorkweekConfig**](LaborApi.md#UpdateWorkweekConfig) | **Put** /v2/labor/workweek-configs/{id} | UpdateWorkweekConfig
 
 # **CreateBreakType**
-
 > CreateBreakTypeResponse CreateBreakType(ctx, body)
-> CreateBreakType
+CreateBreakType
 
-Creates a new `BreakType`. A `BreakType` is a template for creating `Break` objects. You must provide the following
-values in your request to this endpoint:  - `location_id` - `break_name` - `expected_duration` - `is_paid`  You can only
-have three `BreakType` instances per location. If you attempt to add a fourth `BreakType` for a location,
-an `INVALID_REQUEST_ERROR` \"Exceeded limit of 3 breaks per location.\" is returned.
+Creates a new `BreakType`.  A `BreakType` is a template for creating `Break` objects. You must provide the following values in your request to this endpoint:  - `location_id` - `break_name` - `expected_duration` - `is_paid`  You can only have three `BreakType` instances per location. If you attempt to add a fourth `BreakType` for a location, an `INVALID_REQUEST_ERROR` \"Exceeded limit of 3 breaks per location.\" is returned.
 
 ### Required Parameters
 
- Name     | Type                                                    | Description                                                                 | Notes 
-----------|---------------------------------------------------------|-----------------------------------------------------------------------------|-------
- **ctx**  | **context.Context**                                     | context for authentication, logging, cancellation, deadlines, tracing, etc. 
- **body** | [**CreateBreakTypeRequest**](CreateBreakTypeRequest.md) | An object containing the fields to POST for the request.                    
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+  **body** | [**CreateBreakTypeRequest**](CreateBreakTypeRequest.md)| An object containing the fields to POST for the request.
 
-See the corresponding object definition for field details. |
+See the corresponding object definition for field details. | 
 
 ### Return type
 
@@ -50,31 +46,25 @@ See the corresponding object definition for field details. |
 
 ### HTTP request headers
 
-- **Content-Type**: application/json
-- **Accept**: application/json
+ - **Content-Type**: application/json
+ - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **CreateShift**
-
 > CreateShiftResponse CreateShift(ctx, body)
-> CreateShift
+CreateShift
 
-Creates a new `Shift`. A `Shift` represents a complete workday for a single employee. You must provide the following
-values in your request to this endpoint:  - `location_id` - `employee_id` - `start_at`  An attempt to create a
-new `Shift` can result in a `BAD_REQUEST` error when: - The `status` of the new `Shift` is `OPEN` and the employee has
-another shift with an `OPEN` status. - The `start_at` date is in the future. - The `start_at` or `end_at` date overlaps
-another shift for the same employee. - The `Break` instances are set in the request and a break `start_at` is before
-the `Shift.start_at`, a break `end_at` is after the `Shift.end_at`, or both.
+Creates a new `Shift`.  A `Shift` represents a complete workday for a single employee. You must provide the following values in your request to this endpoint:  - `location_id` - `employee_id` - `start_at`  An attempt to create a new `Shift` can result in a `BAD_REQUEST` error when: - The `status` of the new `Shift` is `OPEN` and the employee has another shift with an `OPEN` status. - The `start_at` date is in the future. - The `start_at` or `end_at` date overlaps another shift for the same employee. - The `Break` instances are set in the request and a break `start_at` is before the `Shift.start_at`, a break `end_at` is after the `Shift.end_at`, or both.
 
 ### Required Parameters
 
- Name     | Type                                            | Description                                                                 | Notes 
-----------|-------------------------------------------------|-----------------------------------------------------------------------------|-------
- **ctx**  | **context.Context**                             | context for authentication, logging, cancellation, deadlines, tracing, etc. 
- **body** | [**CreateShiftRequest**](CreateShiftRequest.md) | An object containing the fields to POST for the request.                    
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+  **body** | [**CreateShiftRequest**](CreateShiftRequest.md)| An object containing the fields to POST for the request.
 
-See the corresponding object definition for field details. |
+See the corresponding object definition for field details. | 
 
 ### Return type
 
@@ -86,24 +76,23 @@ See the corresponding object definition for field details. |
 
 ### HTTP request headers
 
-- **Content-Type**: application/json
-- **Accept**: application/json
+ - **Content-Type**: application/json
+ - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **DeleteBreakType**
-
 > DeleteBreakTypeResponse DeleteBreakType(ctx, id)
-> DeleteBreakType
+DeleteBreakType
 
-Deletes an existing `BreakType`. A `BreakType` can be deleted even if it is referenced from a `Shift`.
+Deletes an existing `BreakType`.  A `BreakType` can be deleted even if it is referenced from a `Shift`.
 
 ### Required Parameters
 
- Name    | Type                | Description                                                                 | Notes 
----------|---------------------|-----------------------------------------------------------------------------|-------
- **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc. 
- **id**  | **string**          | The UUID for the &#x60;BreakType&#x60; being deleted.                       |
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+  **id** | **string**| The UUID for the &#x60;BreakType&#x60; being deleted. | 
 
 ### Return type
 
@@ -115,24 +104,23 @@ Deletes an existing `BreakType`. A `BreakType` can be deleted even if it is refe
 
 ### HTTP request headers
 
-- **Content-Type**: Not defined
-- **Accept**: application/json
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **DeleteShift**
-
 > DeleteShiftResponse DeleteShift(ctx, id)
-> DeleteShift
+DeleteShift
 
 Deletes a `Shift`.
 
 ### Required Parameters
 
- Name    | Type                | Description                                                                 | Notes 
----------|---------------------|-----------------------------------------------------------------------------|-------
- **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc. 
- **id**  | **string**          | The UUID for the &#x60;Shift&#x60; being deleted.                           |
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+  **id** | **string**| The UUID for the &#x60;Shift&#x60; being deleted. | 
 
 ### Return type
 
@@ -144,24 +132,23 @@ Deletes a `Shift`.
 
 ### HTTP request headers
 
-- **Content-Type**: Not defined
-- **Accept**: application/json
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **GetBreakType**
-
 > GetBreakTypeResponse GetBreakType(ctx, id)
-> GetBreakType
+GetBreakType
 
 Returns a single `BreakType` specified by `id`.
 
 ### Required Parameters
 
- Name    | Type                | Description                                                                 | Notes 
----------|---------------------|-----------------------------------------------------------------------------|-------
- **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc. 
- **id**  | **string**          | The UUID for the &#x60;BreakType&#x60; being retrieved.                     |
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+  **id** | **string**| The UUID for the &#x60;BreakType&#x60; being retrieved. | 
 
 ### Return type
 
@@ -173,24 +160,23 @@ Returns a single `BreakType` specified by `id`.
 
 ### HTTP request headers
 
-- **Content-Type**: Not defined
-- **Accept**: application/json
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **GetEmployeeWage**
-
 > GetEmployeeWageResponse GetEmployeeWage(ctx, id)
-> GetEmployeeWage
+GetEmployeeWage
 
 Returns a single `EmployeeWage` specified by `id`.
 
 ### Required Parameters
 
- Name    | Type                | Description                                                                 | Notes 
----------|---------------------|-----------------------------------------------------------------------------|-------
- **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc. 
- **id**  | **string**          | The UUID for the &#x60;EmployeeWage&#x60; being retrieved.                  |
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+  **id** | **string**| The UUID for the &#x60;EmployeeWage&#x60; being retrieved. | 
 
 ### Return type
 
@@ -202,24 +188,23 @@ Returns a single `EmployeeWage` specified by `id`.
 
 ### HTTP request headers
 
-- **Content-Type**: Not defined
-- **Accept**: application/json
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **GetShift**
-
 > GetShiftResponse GetShift(ctx, id)
-> GetShift
+GetShift
 
 Returns a single `Shift` specified by `id`.
 
 ### Required Parameters
 
- Name    | Type                | Description                                                                 | Notes 
----------|---------------------|-----------------------------------------------------------------------------|-------
- **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc. 
- **id**  | **string**          | The UUID for the &#x60;Shift&#x60; being retrieved.                         |
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+  **id** | **string**| The UUID for the &#x60;Shift&#x60; being retrieved. | 
 
 ### Return type
 
@@ -231,24 +216,23 @@ Returns a single `Shift` specified by `id`.
 
 ### HTTP request headers
 
-- **Content-Type**: Not defined
-- **Accept**: application/json
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **GetTeamMemberWage**
-
 > GetTeamMemberWageResponse GetTeamMemberWage(ctx, id)
-> GetTeamMemberWage
+GetTeamMemberWage
 
 Returns a single `TeamMemberWage` specified by `id `.
 
 ### Required Parameters
 
- Name    | Type                | Description                                                                 | Notes 
----------|---------------------|-----------------------------------------------------------------------------|-------
- **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc. 
- **id**  | **string**          | The UUID for the &#x60;TeamMemberWage&#x60; being retrieved.                |
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+  **id** | **string**| The UUID for the &#x60;TeamMemberWage&#x60; being retrieved. | 
 
 ### Return type
 
@@ -260,35 +244,31 @@ Returns a single `TeamMemberWage` specified by `id `.
 
 ### HTTP request headers
 
-- **Content-Type**: Not defined
-- **Accept**: application/json
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **ListBreakTypes**
-
 > ListBreakTypesResponse ListBreakTypes(ctx, optional)
-> ListBreakTypes
+ListBreakTypes
 
 Returns a paginated list of `BreakType` instances for a business.
 
 ### Required Parameters
 
- Name         | Type                            | Description                                                                 | Notes                
---------------|---------------------------------|-----------------------------------------------------------------------------|----------------------
- **ctx**      | **context.Context**             | context for authentication, logging, cancellation, deadlines, tracing, etc. 
- **optional** | ***LaborApiListBreakTypesOpts** | optional parameters                                                         | nil if no parameters 
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+ **optional** | ***LaborApiListBreakTypesOpts** | optional parameters | nil if no parameters
 
 ### Optional Parameters
-
 Optional parameters are passed through a pointer to a LaborApiListBreakTypesOpts struct
-Name | Type | Description | Notes
+Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**locationId** | **optional.String**| Filter the returned &#x60;BreakType&#x60; results to only those that are
-associated with the specified location. |
-**limit** | **optional.Int32**| The maximum number of &#x60;BreakType&#x60; results to return per page. The number can
-range between 1 and 200. The default is 200. |
-**cursor** | **optional.String**| A pointer to the next page of &#x60;BreakType&#x60; results to fetch. |
+ **locationId** | **optional.String**| Filter the returned &#x60;BreakType&#x60; results to only those that are associated with the specified location. | 
+ **limit** | **optional.Int32**| The maximum number of &#x60;BreakType&#x60; results to return per page. The number can range between 1 and 200. The default is 200. | 
+ **cursor** | **optional.String**| A pointer to the next page of &#x60;BreakType&#x60; results to fetch. | 
 
 ### Return type
 
@@ -300,35 +280,31 @@ range between 1 and 200. The default is 200. |
 
 ### HTTP request headers
 
-- **Content-Type**: Not defined
-- **Accept**: application/json
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **ListEmployeeWages**
-
 > ListEmployeeWagesResponse ListEmployeeWages(ctx, optional)
-> ListEmployeeWages
+ListEmployeeWages
 
 Returns a paginated list of `EmployeeWage` instances for a business.
 
 ### Required Parameters
 
- Name         | Type                               | Description                                                                 | Notes                
---------------|------------------------------------|-----------------------------------------------------------------------------|----------------------
- **ctx**      | **context.Context**                | context for authentication, logging, cancellation, deadlines, tracing, etc. 
- **optional** | ***LaborApiListEmployeeWagesOpts** | optional parameters                                                         | nil if no parameters 
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+ **optional** | ***LaborApiListEmployeeWagesOpts** | optional parameters | nil if no parameters
 
 ### Optional Parameters
-
 Optional parameters are passed through a pointer to a LaborApiListEmployeeWagesOpts struct
-Name | Type | Description | Notes
+Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**employeeId** | **optional.String**| Filter the returned wages to only those that are associated with the specified
-employee. |
-**limit** | **optional.Int32**| The maximum number of &#x60;EmployeeWage&#x60; results to return per page. The number
-can range between 1 and 200. The default is 200. |
-**cursor** | **optional.String**| A pointer to the next page of &#x60;EmployeeWage&#x60; results to fetch. |
+ **employeeId** | **optional.String**| Filter the returned wages to only those that are associated with the specified employee. | 
+ **limit** | **optional.Int32**| The maximum number of &#x60;EmployeeWage&#x60; results to return per page. The number can range between 1 and 200. The default is 200. | 
+ **cursor** | **optional.String**| A pointer to the next page of &#x60;EmployeeWage&#x60; results to fetch. | 
 
 ### Return type
 
@@ -340,35 +316,31 @@ can range between 1 and 200. The default is 200. |
 
 ### HTTP request headers
 
-- **Content-Type**: Not defined
-- **Accept**: application/json
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **ListTeamMemberWages**
-
 > ListTeamMemberWagesResponse ListTeamMemberWages(ctx, optional)
-> ListTeamMemberWages
+ListTeamMemberWages
 
 Returns a paginated list of `TeamMemberWage` instances for a business.
 
 ### Required Parameters
 
- Name         | Type                                 | Description                                                                 | Notes                
---------------|--------------------------------------|-----------------------------------------------------------------------------|----------------------
- **ctx**      | **context.Context**                  | context for authentication, logging, cancellation, deadlines, tracing, etc. 
- **optional** | ***LaborApiListTeamMemberWagesOpts** | optional parameters                                                         | nil if no parameters 
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+ **optional** | ***LaborApiListTeamMemberWagesOpts** | optional parameters | nil if no parameters
 
 ### Optional Parameters
-
 Optional parameters are passed through a pointer to a LaborApiListTeamMemberWagesOpts struct
-Name | Type | Description | Notes
+Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**teamMemberId** | **optional.String**| Filter the returned wages to only those that are associated with the specified
-team member. |
-**limit** | **optional.Int32**| The maximum number of &#x60;TeamMemberWage&#x60; results to return per page. The number
-can range between 1 and 200. The default is 200. |
-**cursor** | **optional.String**| A pointer to the next page of &#x60;EmployeeWage&#x60; results to fetch. |
+ **teamMemberId** | **optional.String**| Filter the returned wages to only those that are associated with the specified team member. | 
+ **limit** | **optional.Int32**| The maximum number of &#x60;TeamMemberWage&#x60; results to return per page. The number can range between 1 and 200. The default is 200. | 
+ **cursor** | **optional.String**| A pointer to the next page of &#x60;EmployeeWage&#x60; results to fetch. | 
 
 ### Return type
 
@@ -380,32 +352,30 @@ can range between 1 and 200. The default is 200. |
 
 ### HTTP request headers
 
-- **Content-Type**: Not defined
-- **Accept**: application/json
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **ListWorkweekConfigs**
-
 > ListWorkweekConfigsResponse ListWorkweekConfigs(ctx, optional)
-> ListWorkweekConfigs
+ListWorkweekConfigs
 
 Returns a list of `WorkweekConfig` instances for a business.
 
 ### Required Parameters
 
- Name         | Type                                 | Description                                                                 | Notes                
---------------|--------------------------------------|-----------------------------------------------------------------------------|----------------------
- **ctx**      | **context.Context**                  | context for authentication, logging, cancellation, deadlines, tracing, etc. 
- **optional** | ***LaborApiListWorkweekConfigsOpts** | optional parameters                                                         | nil if no parameters 
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+ **optional** | ***LaborApiListWorkweekConfigsOpts** | optional parameters | nil if no parameters
 
 ### Optional Parameters
-
 Optional parameters are passed through a pointer to a LaborApiListWorkweekConfigsOpts struct
-Name | Type | Description | Notes
+Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-**limit** | **optional.Int32**| The maximum number of &#x60;WorkweekConfigs&#x60; results to return per page. |
-**cursor** | **optional.String**| A pointer to the next page of &#x60;WorkweekConfig&#x60; results to fetch. |
+ **limit** | **optional.Int32**| The maximum number of &#x60;WorkweekConfigs&#x60; results to return per page. | 
+ **cursor** | **optional.String**| A pointer to the next page of &#x60;WorkweekConfig&#x60; results to fetch. | 
 
 ### Return type
 
@@ -417,28 +387,25 @@ Name | Type | Description | Notes
 
 ### HTTP request headers
 
-- **Content-Type**: Not defined
-- **Accept**: application/json
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **SearchShifts**
-
 > SearchShiftsResponse SearchShifts(ctx, body)
-> SearchShifts
+SearchShifts
 
-Returns a paginated list of `Shift` records for a business. The list to be returned can be filtered by: - Location
-IDs. - Employee IDs. - Shift status (`OPEN` and `CLOSED`). - Shift start. - Shift end. - Workday details. The list can
-be sorted by: - `start_at`. - `end_at`. - `created_at`. - `updated_at`.
+Returns a paginated list of `Shift` records for a business. The list to be returned can be filtered by: - Location IDs. - Employee IDs. - Shift status (`OPEN` and `CLOSED`). - Shift start. - Shift end. - Workday details.  The list can be sorted by: - `start_at`. - `end_at`. - `created_at`. - `updated_at`.
 
 ### Required Parameters
 
- Name     | Type                                              | Description                                                                 | Notes 
-----------|---------------------------------------------------|-----------------------------------------------------------------------------|-------
- **ctx**  | **context.Context**                               | context for authentication, logging, cancellation, deadlines, tracing, etc. 
- **body** | [**SearchShiftsRequest**](SearchShiftsRequest.md) | An object containing the fields to POST for the request.                    
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+  **body** | [**SearchShiftsRequest**](SearchShiftsRequest.md)| An object containing the fields to POST for the request.
 
-See the corresponding object definition for field details. |
+See the corresponding object definition for field details. | 
 
 ### Return type
 
@@ -450,27 +417,26 @@ See the corresponding object definition for field details. |
 
 ### HTTP request headers
 
-- **Content-Type**: application/json
-- **Accept**: application/json
+ - **Content-Type**: application/json
+ - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **UpdateBreakType**
-
 > UpdateBreakTypeResponse UpdateBreakType(ctx, body, id)
-> UpdateBreakType
+UpdateBreakType
 
 Updates an existing `BreakType`.
 
 ### Required Parameters
 
- Name     | Type                                                    | Description                                                                 | Notes 
-----------|---------------------------------------------------------|-----------------------------------------------------------------------------|-------
- **ctx**  | **context.Context**                                     | context for authentication, logging, cancellation, deadlines, tracing, etc. 
- **body** | [**UpdateBreakTypeRequest**](UpdateBreakTypeRequest.md) | An object containing the fields to POST for the request.                    
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+  **body** | [**UpdateBreakTypeRequest**](UpdateBreakTypeRequest.md)| An object containing the fields to POST for the request.
 
-See the corresponding object definition for field details. |
-**id** | **string**| The UUID for the &#x60;BreakType&#x60; being updated. |
+See the corresponding object definition for field details. | 
+  **id** | **string**|  The UUID for the &#x60;BreakType&#x60; being updated. | 
 
 ### Return type
 
@@ -482,29 +448,26 @@ See the corresponding object definition for field details. |
 
 ### HTTP request headers
 
-- **Content-Type**: application/json
-- **Accept**: application/json
+ - **Content-Type**: application/json
+ - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **UpdateShift**
-
 > UpdateShiftResponse UpdateShift(ctx, body, id)
-> UpdateShift
+UpdateShift
 
-Updates an existing `Shift`. When adding a `Break` to a `Shift`, any earlier `Break` instances in the `Shift` have
-the `end_at` property set to a valid RFC-3339 datetime string. When closing a `Shift`, all `Break` instances in
-the `Shift` must be complete with `end_at` set on each `Break`.
+Updates an existing `Shift`.  When adding a `Break` to a `Shift`, any earlier `Break` instances in the `Shift` have the `end_at` property set to a valid RFC-3339 datetime string.  When closing a `Shift`, all `Break` instances in the `Shift` must be complete with `end_at` set on each `Break`.
 
 ### Required Parameters
 
- Name     | Type                                            | Description                                                                 | Notes 
-----------|-------------------------------------------------|-----------------------------------------------------------------------------|-------
- **ctx**  | **context.Context**                             | context for authentication, logging, cancellation, deadlines, tracing, etc. 
- **body** | [**UpdateShiftRequest**](UpdateShiftRequest.md) | An object containing the fields to POST for the request.                    
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+  **body** | [**UpdateShiftRequest**](UpdateShiftRequest.md)| An object containing the fields to POST for the request.
 
-See the corresponding object definition for field details. |
-**id** | **string**| The ID of the object being updated. |
+See the corresponding object definition for field details. | 
+  **id** | **string**| The ID of the object being updated. | 
 
 ### Return type
 
@@ -516,27 +479,26 @@ See the corresponding object definition for field details. |
 
 ### HTTP request headers
 
-- **Content-Type**: application/json
-- **Accept**: application/json
+ - **Content-Type**: application/json
+ - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **UpdateWorkweekConfig**
-
 > UpdateWorkweekConfigResponse UpdateWorkweekConfig(ctx, body, id)
-> UpdateWorkweekConfig
+UpdateWorkweekConfig
 
 Updates a `WorkweekConfig`.
 
 ### Required Parameters
 
- Name     | Type                                                              | Description                                                                 | Notes 
-----------|-------------------------------------------------------------------|-----------------------------------------------------------------------------|-------
- **ctx**  | **context.Context**                                               | context for authentication, logging, cancellation, deadlines, tracing, etc. 
- **body** | [**UpdateWorkweekConfigRequest**](UpdateWorkweekConfigRequest.md) | An object containing the fields to POST for the request.                    
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+  **body** | [**UpdateWorkweekConfigRequest**](UpdateWorkweekConfigRequest.md)| An object containing the fields to POST for the request.
 
-See the corresponding object definition for field details. |
-**id** | **string**| The UUID for the &#x60;WorkweekConfig&#x60; object being updated. |
+See the corresponding object definition for field details. | 
+  **id** | **string**| The UUID for the &#x60;WorkweekConfig&#x60; object being updated. | 
 
 ### Return type
 
@@ -548,8 +510,8 @@ See the corresponding object definition for field details. |
 
 ### HTTP request headers
 
-- **Content-Type**: application/json
-- **Accept**: application/json
+ - **Content-Type**: application/json
+ - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

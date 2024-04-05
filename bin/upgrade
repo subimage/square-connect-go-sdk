@@ -1,0 +1,3 @@
+#!/bin/bash
+rm open-api-3_square
+wget https://docs.connect.squareup.com/v2/api/specifications/open-api-3_square

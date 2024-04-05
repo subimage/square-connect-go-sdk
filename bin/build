@@ -1,0 +1,3 @@
+#!/bin/bash
+docker build -t square-connect-go-sdk .
+docker run --rm -it -v $PWD:/mnt square-connect-go-sdk -c "rm -fr /mnt/swagger; cp -r /build/square-connect-sdk/ /mnt/swagger"
